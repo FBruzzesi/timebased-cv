@@ -1,0 +1,2350 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Time based splits for cross validation">
+      
+      
+        <meta name="author" content="Francesco Bruzzesi">
+      
+      
+        <link rel="canonical" href="https://fbruzzesi.github.io/timebasedcv/api/timebasedcv/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../core/">
+      
+      
+      <link rel="icon" href="../../img/timebasedcv-logo.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+    
+    
+      
+        <title>timebasedcv - Timebased CV</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#timebasedcv" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Timebased CV" class="md-header__button md-logo" aria-label="Timebased CV" data-md-component="logo">
+      
+  <img src="../../img/timebasedcv-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Timebased CV
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              timebasedcv
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fbruzzesi/timebasedcv" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FBruzzesi/timebasedcv
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../user-guide/" class="md-tabs__link">
+          
+  
+    
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Timebased CV" class="md-nav__button md-logo" aria-label="Timebased CV" data-md-component="logo">
+      
+  <img src="../../img/timebasedcv-logo.png" alt="logo">
+
+    </a>
+    Timebased CV
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fbruzzesi/timebasedcv" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    FBruzzesi/timebasedcv
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contribute/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../user-guide/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/advanced/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advanced features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/scikit-learn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scikit-learn component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    timebasedcv
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    timebasedcv
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.TimeBasedSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      TimeBasedSplit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TimeBasedSplit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timebasedcv.core.TimeBasedSplit.split" class="md-nav__link">
+    <span class="md-ellipsis">
+      split
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.ExpandingTimeSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExpandingTimeSplit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.RollingTimeSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      RollingTimeSplit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    timebasedcv.core
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sklearn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    timebasedcv.sklearn
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../splitstate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    timebasedcv.splitstate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.TimeBasedSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      TimeBasedSplit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TimeBasedSplit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#timebasedcv.core.TimeBasedSplit.split" class="md-nav__link">
+    <span class="md-ellipsis">
+      split
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.ExpandingTimeSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      ExpandingTimeSplit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timebasedcv.core.RollingTimeSplit" class="md-nav__link">
+    <span class="md-ellipsis">
+      RollingTimeSplit
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/fbruzzesi/timebasedcv/edit/main/docs/api/timebasedcv.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/fbruzzesi/timebasedcv/raw/main/docs/api/timebasedcv.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+<h1 id="timebasedcv"><code>timebasedcv</code><a class="headerlink" href="#timebasedcv" title="Permanent link">&para;</a></h1>
+<p>Here are the top-level classes available in timebasedcv.</p>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="timebasedcv.core.TimeBasedSplit" class="doc doc-heading">
+            <code>TimeBasedSplit</code>
+
+
+<a href="#timebasedcv.core.TimeBasedSplit" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core._CoreTimeBasedSplit" href="../core/#timebasedcv.core._CoreTimeBasedSplit">_CoreTimeBasedSplit</a></code></p>
+
+
+      <p>Class that generates splits based on time values, independently from the number of samples in each split.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>frequency</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.FrequencyUnit">FrequencyUnit</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The frequency of the time series. Must be one of "days", "seconds", "microseconds", "milliseconds",
+"minutes", "hours", "weeks". These are the only valid values for the <code>unit</code> argument of <code>timedelta</code> from
+python <code>datetime</code> standard library.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>train_size</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The size of the training set.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>forecast_horizon</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The size of the forecast horizon, i.e. the size of the test set.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>gap</code></td>
+            <td>
+                  <code>int</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The size of the gap between the training set and the forecast horizon.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>stride</code></td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[int, None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),
+it fallbacks to the <code>forecast_horizon</code> quantity.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>window</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.WindowType">WindowType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The type of window to use, either "rolling" or "expanding".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;rolling&#39;</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>mode</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.ModeType">ModeType</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Determines in which orders the splits are generated, either "forward" or "backward".</p>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;forward&#39;</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>frequency</code> is not one of "days", "seconds", "microseconds", "milliseconds", "minutes", "hours",
+"weeks".</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>window</code> is not one of "rolling" or "expanding".</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code>TypeError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not of type <code>int</code>.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not strictly positive.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+      <p>Usage:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">timebasedcv</span> <span class="kn">import</span> <span class="n">TimeBasedSplit</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">tbs</span> <span class="o">=</span> <span class="n">TimeBasedSplit</span><span class="p">(</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;days&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">train_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">forecast_horizon</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">gap</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">stride</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">window</span><span class="o">=</span><span class="s2">&quot;rolling&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2023-12-31&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">))</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of splits: </span><span class="si">{</span><span class="n">tbs</span><span class="o">.</span><span class="n">n_splits_of</span><span class="p">(</span><span class="n">time_series</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">for</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_forecast</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_forecast</span> <span class="ow">in</span> <span class="n">tbs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="n">dates</span><span class="p">):</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, Forecast: </span><span class="si">{</span><span class="n">X_forecast</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<p>A few examples on how splits are generated given the parameters. Let:</p>
+<ul>
+<li><code>=</code> : train period unit</li>
+<li><code>*</code> : forecast period unit</li>
+<li><code>/</code> : gap period unit</li>
+<li><code>&gt;</code> : stride period unit (absorbed in <code>=</code> if <code>window="expanding"</code>)</li>
+</ul>
+<p>Recall also that if <code>stride</code> is not provided, it is set to <code>forecast_horizon</code>:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>train_size, forecast_horizon, gap, stride, window = (4, 3, 0, None, &quot;rolling&quot;)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>| ======= *****               |
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>| &gt;&gt;&gt;&gt;&gt; ======= *****         |
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>|       &gt;&gt;&gt;&gt;&gt; ======= *****   |
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>|             &gt;&gt;&gt;&gt;&gt; ======= * |
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>train_size, forecast_horizon, gap, stride, window = (4, 3, 2, 2, &quot;rolling&quot;)
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>| ======= /// *****           |
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>| &gt;&gt;&gt; ======= /// *****       |
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>|     &gt;&gt;&gt; ======= /// *****   |
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>|         &gt;&gt;&gt; ======= /// *** |
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>train_size, forecast_horizon, gap, stride, window = (4, 3, 2, 2, &quot;expanding&quot;)
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>| ======= /// *****           |
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>| =========== /// *****       |
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>| =============== /// *****   |
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>| =================== /// *** |
+</code></pre></div></p>
+
+              <details class="quote">
+                <summary>Source code in <code>timebasedcv/core.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-259">259</a></span>
+<span class="normal"><a href="#__codelineno-0-260">260</a></span>
+<span class="normal"><a href="#__codelineno-0-261">261</a></span>
+<span class="normal"><a href="#__codelineno-0-262">262</a></span>
+<span class="normal"><a href="#__codelineno-0-263">263</a></span>
+<span class="normal"><a href="#__codelineno-0-264">264</a></span>
+<span class="normal"><a href="#__codelineno-0-265">265</a></span>
+<span class="normal"><a href="#__codelineno-0-266">266</a></span>
+<span class="normal"><a href="#__codelineno-0-267">267</a></span>
+<span class="normal"><a href="#__codelineno-0-268">268</a></span>
+<span class="normal"><a href="#__codelineno-0-269">269</a></span>
+<span class="normal"><a href="#__codelineno-0-270">270</a></span>
+<span class="normal"><a href="#__codelineno-0-271">271</a></span>
+<span class="normal"><a href="#__codelineno-0-272">272</a></span>
+<span class="normal"><a href="#__codelineno-0-273">273</a></span>
+<span class="normal"><a href="#__codelineno-0-274">274</a></span>
+<span class="normal"><a href="#__codelineno-0-275">275</a></span>
+<span class="normal"><a href="#__codelineno-0-276">276</a></span>
+<span class="normal"><a href="#__codelineno-0-277">277</a></span>
+<span class="normal"><a href="#__codelineno-0-278">278</a></span>
+<span class="normal"><a href="#__codelineno-0-279">279</a></span>
+<span class="normal"><a href="#__codelineno-0-280">280</a></span>
+<span class="normal"><a href="#__codelineno-0-281">281</a></span>
+<span class="normal"><a href="#__codelineno-0-282">282</a></span>
+<span class="normal"><a href="#__codelineno-0-283">283</a></span>
+<span class="normal"><a href="#__codelineno-0-284">284</a></span>
+<span class="normal"><a href="#__codelineno-0-285">285</a></span>
+<span class="normal"><a href="#__codelineno-0-286">286</a></span>
+<span class="normal"><a href="#__codelineno-0-287">287</a></span>
+<span class="normal"><a href="#__codelineno-0-288">288</a></span>
+<span class="normal"><a href="#__codelineno-0-289">289</a></span>
+<span class="normal"><a href="#__codelineno-0-290">290</a></span>
+<span class="normal"><a href="#__codelineno-0-291">291</a></span>
+<span class="normal"><a href="#__codelineno-0-292">292</a></span>
+<span class="normal"><a href="#__codelineno-0-293">293</a></span>
+<span class="normal"><a href="#__codelineno-0-294">294</a></span>
+<span class="normal"><a href="#__codelineno-0-295">295</a></span>
+<span class="normal"><a href="#__codelineno-0-296">296</a></span>
+<span class="normal"><a href="#__codelineno-0-297">297</a></span>
+<span class="normal"><a href="#__codelineno-0-298">298</a></span>
+<span class="normal"><a href="#__codelineno-0-299">299</a></span>
+<span class="normal"><a href="#__codelineno-0-300">300</a></span>
+<span class="normal"><a href="#__codelineno-0-301">301</a></span>
+<span class="normal"><a href="#__codelineno-0-302">302</a></span>
+<span class="normal"><a href="#__codelineno-0-303">303</a></span>
+<span class="normal"><a href="#__codelineno-0-304">304</a></span>
+<span class="normal"><a href="#__codelineno-0-305">305</a></span>
+<span class="normal"><a href="#__codelineno-0-306">306</a></span>
+<span class="normal"><a href="#__codelineno-0-307">307</a></span>
+<span class="normal"><a href="#__codelineno-0-308">308</a></span>
+<span class="normal"><a href="#__codelineno-0-309">309</a></span>
+<span class="normal"><a href="#__codelineno-0-310">310</a></span>
+<span class="normal"><a href="#__codelineno-0-311">311</a></span>
+<span class="normal"><a href="#__codelineno-0-312">312</a></span>
+<span class="normal"><a href="#__codelineno-0-313">313</a></span>
+<span class="normal"><a href="#__codelineno-0-314">314</a></span>
+<span class="normal"><a href="#__codelineno-0-315">315</a></span>
+<span class="normal"><a href="#__codelineno-0-316">316</a></span>
+<span class="normal"><a href="#__codelineno-0-317">317</a></span>
+<span class="normal"><a href="#__codelineno-0-318">318</a></span>
+<span class="normal"><a href="#__codelineno-0-319">319</a></span>
+<span class="normal"><a href="#__codelineno-0-320">320</a></span>
+<span class="normal"><a href="#__codelineno-0-321">321</a></span>
+<span class="normal"><a href="#__codelineno-0-322">322</a></span>
+<span class="normal"><a href="#__codelineno-0-323">323</a></span>
+<span class="normal"><a href="#__codelineno-0-324">324</a></span>
+<span class="normal"><a href="#__codelineno-0-325">325</a></span>
+<span class="normal"><a href="#__codelineno-0-326">326</a></span>
+<span class="normal"><a href="#__codelineno-0-327">327</a></span>
+<span class="normal"><a href="#__codelineno-0-328">328</a></span>
+<span class="normal"><a href="#__codelineno-0-329">329</a></span>
+<span class="normal"><a href="#__codelineno-0-330">330</a></span>
+<span class="normal"><a href="#__codelineno-0-331">331</a></span>
+<span class="normal"><a href="#__codelineno-0-332">332</a></span>
+<span class="normal"><a href="#__codelineno-0-333">333</a></span>
+<span class="normal"><a href="#__codelineno-0-334">334</a></span>
+<span class="normal"><a href="#__codelineno-0-335">335</a></span>
+<span class="normal"><a href="#__codelineno-0-336">336</a></span>
+<span class="normal"><a href="#__codelineno-0-337">337</a></span>
+<span class="normal"><a href="#__codelineno-0-338">338</a></span>
+<span class="normal"><a href="#__codelineno-0-339">339</a></span>
+<span class="normal"><a href="#__codelineno-0-340">340</a></span>
+<span class="normal"><a href="#__codelineno-0-341">341</a></span>
+<span class="normal"><a href="#__codelineno-0-342">342</a></span>
+<span class="normal"><a href="#__codelineno-0-343">343</a></span>
+<span class="normal"><a href="#__codelineno-0-344">344</a></span>
+<span class="normal"><a href="#__codelineno-0-345">345</a></span>
+<span class="normal"><a href="#__codelineno-0-346">346</a></span>
+<span class="normal"><a href="#__codelineno-0-347">347</a></span>
+<span class="normal"><a href="#__codelineno-0-348">348</a></span>
+<span class="normal"><a href="#__codelineno-0-349">349</a></span>
+<span class="normal"><a href="#__codelineno-0-350">350</a></span>
+<span class="normal"><a href="#__codelineno-0-351">351</a></span>
+<span class="normal"><a href="#__codelineno-0-352">352</a></span>
+<span class="normal"><a href="#__codelineno-0-353">353</a></span>
+<span class="normal"><a href="#__codelineno-0-354">354</a></span>
+<span class="normal"><a href="#__codelineno-0-355">355</a></span>
+<span class="normal"><a href="#__codelineno-0-356">356</a></span>
+<span class="normal"><a href="#__codelineno-0-357">357</a></span>
+<span class="normal"><a href="#__codelineno-0-358">358</a></span>
+<span class="normal"><a href="#__codelineno-0-359">359</a></span>
+<span class="normal"><a href="#__codelineno-0-360">360</a></span>
+<span class="normal"><a href="#__codelineno-0-361">361</a></span>
+<span class="normal"><a href="#__codelineno-0-362">362</a></span>
+<span class="normal"><a href="#__codelineno-0-363">363</a></span>
+<span class="normal"><a href="#__codelineno-0-364">364</a></span>
+<span class="normal"><a href="#__codelineno-0-365">365</a></span>
+<span class="normal"><a href="#__codelineno-0-366">366</a></span>
+<span class="normal"><a href="#__codelineno-0-367">367</a></span>
+<span class="normal"><a href="#__codelineno-0-368">368</a></span>
+<span class="normal"><a href="#__codelineno-0-369">369</a></span>
+<span class="normal"><a href="#__codelineno-0-370">370</a></span>
+<span class="normal"><a href="#__codelineno-0-371">371</a></span>
+<span class="normal"><a href="#__codelineno-0-372">372</a></span>
+<span class="normal"><a href="#__codelineno-0-373">373</a></span>
+<span class="normal"><a href="#__codelineno-0-374">374</a></span>
+<span class="normal"><a href="#__codelineno-0-375">375</a></span>
+<span class="normal"><a href="#__codelineno-0-376">376</a></span>
+<span class="normal"><a href="#__codelineno-0-377">377</a></span>
+<span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span>
+<span class="normal"><a href="#__codelineno-0-388">388</a></span>
+<span class="normal"><a href="#__codelineno-0-389">389</a></span>
+<span class="normal"><a href="#__codelineno-0-390">390</a></span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span>
+<span class="normal"><a href="#__codelineno-0-392">392</a></span>
+<span class="normal"><a href="#__codelineno-0-393">393</a></span>
+<span class="normal"><a href="#__codelineno-0-394">394</a></span>
+<span class="normal"><a href="#__codelineno-0-395">395</a></span>
+<span class="normal"><a href="#__codelineno-0-396">396</a></span>
+<span class="normal"><a href="#__codelineno-0-397">397</a></span>
+<span class="normal"><a href="#__codelineno-0-398">398</a></span>
+<span class="normal"><a href="#__codelineno-0-399">399</a></span>
+<span class="normal"><a href="#__codelineno-0-400">400</a></span>
+<span class="normal"><a href="#__codelineno-0-401">401</a></span>
+<span class="normal"><a href="#__codelineno-0-402">402</a></span>
+<span class="normal"><a href="#__codelineno-0-403">403</a></span>
+<span class="normal"><a href="#__codelineno-0-404">404</a></span>
+<span class="normal"><a href="#__codelineno-0-405">405</a></span>
+<span class="normal"><a href="#__codelineno-0-406">406</a></span>
+<span class="normal"><a href="#__codelineno-0-407">407</a></span>
+<span class="normal"><a href="#__codelineno-0-408">408</a></span>
+<span class="normal"><a href="#__codelineno-0-409">409</a></span>
+<span class="normal"><a href="#__codelineno-0-410">410</a></span>
+<span class="normal"><a href="#__codelineno-0-411">411</a></span>
+<span class="normal"><a href="#__codelineno-0-412">412</a></span>
+<span class="normal"><a href="#__codelineno-0-413">413</a></span>
+<span class="normal"><a href="#__codelineno-0-414">414</a></span>
+<span class="normal"><a href="#__codelineno-0-415">415</a></span>
+<span class="normal"><a href="#__codelineno-0-416">416</a></span>
+<span class="normal"><a href="#__codelineno-0-417">417</a></span>
+<span class="normal"><a href="#__codelineno-0-418">418</a></span>
+<span class="normal"><a href="#__codelineno-0-419">419</a></span>
+<span class="normal"><a href="#__codelineno-0-420">420</a></span>
+<span class="normal"><a href="#__codelineno-0-421">421</a></span>
+<span class="normal"><a href="#__codelineno-0-422">422</a></span>
+<span class="normal"><a href="#__codelineno-0-423">423</a></span>
+<span class="normal"><a href="#__codelineno-0-424">424</a></span>
+<span class="normal"><a href="#__codelineno-0-425">425</a></span>
+<span class="normal"><a href="#__codelineno-0-426">426</a></span>
+<span class="normal"><a href="#__codelineno-0-427">427</a></span>
+<span class="normal"><a href="#__codelineno-0-428">428</a></span>
+<span class="normal"><a href="#__codelineno-0-429">429</a></span>
+<span class="normal"><a href="#__codelineno-0-430">430</a></span>
+<span class="normal"><a href="#__codelineno-0-431">431</a></span>
+<span class="normal"><a href="#__codelineno-0-432">432</a></span>
+<span class="normal"><a href="#__codelineno-0-433">433</a></span>
+<span class="normal"><a href="#__codelineno-0-434">434</a></span>
+<span class="normal"><a href="#__codelineno-0-435">435</a></span>
+<span class="normal"><a href="#__codelineno-0-436">436</a></span>
+<span class="normal"><a href="#__codelineno-0-437">437</a></span>
+<span class="normal"><a href="#__codelineno-0-438">438</a></span>
+<span class="normal"><a href="#__codelineno-0-439">439</a></span>
+<span class="normal"><a href="#__codelineno-0-440">440</a></span>
+<span class="normal"><a href="#__codelineno-0-441">441</a></span>
+<span class="normal"><a href="#__codelineno-0-442">442</a></span>
+<span class="normal"><a href="#__codelineno-0-443">443</a></span>
+<span class="normal"><a href="#__codelineno-0-444">444</a></span>
+<span class="normal"><a href="#__codelineno-0-445">445</a></span>
+<span class="normal"><a href="#__codelineno-0-446">446</a></span>
+<span class="normal"><a href="#__codelineno-0-447">447</a></span>
+<span class="normal"><a href="#__codelineno-0-448">448</a></span>
+<span class="normal"><a href="#__codelineno-0-449">449</a></span>
+<span class="normal"><a href="#__codelineno-0-450">450</a></span>
+<span class="normal"><a href="#__codelineno-0-451">451</a></span>
+<span class="normal"><a href="#__codelineno-0-452">452</a></span>
+<span class="normal"><a href="#__codelineno-0-453">453</a></span>
+<span class="normal"><a href="#__codelineno-0-454">454</a></span>
+<span class="normal"><a href="#__codelineno-0-455">455</a></span>
+<span class="normal"><a href="#__codelineno-0-456">456</a></span>
+<span class="normal"><a href="#__codelineno-0-457">457</a></span>
+<span class="normal"><a href="#__codelineno-0-458">458</a></span>
+<span class="normal"><a href="#__codelineno-0-459">459</a></span>
+<span class="normal"><a href="#__codelineno-0-460">460</a></span>
+<span class="normal"><a href="#__codelineno-0-461">461</a></span>
+<span class="normal"><a href="#__codelineno-0-462">462</a></span>
+<span class="normal"><a href="#__codelineno-0-463">463</a></span>
+<span class="normal"><a href="#__codelineno-0-464">464</a></span>
+<span class="normal"><a href="#__codelineno-0-465">465</a></span>
+<span class="normal"><a href="#__codelineno-0-466">466</a></span>
+<span class="normal"><a href="#__codelineno-0-467">467</a></span>
+<span class="normal"><a href="#__codelineno-0-468">468</a></span>
+<span class="normal"><a href="#__codelineno-0-469">469</a></span>
+<span class="normal"><a href="#__codelineno-0-470">470</a></span>
+<span class="normal"><a href="#__codelineno-0-471">471</a></span>
+<span class="normal"><a href="#__codelineno-0-472">472</a></span>
+<span class="normal"><a href="#__codelineno-0-473">473</a></span>
+<span class="normal"><a href="#__codelineno-0-474">474</a></span>
+<span class="normal"><a href="#__codelineno-0-475">475</a></span>
+<span class="normal"><a href="#__codelineno-0-476">476</a></span>
+<span class="normal"><a href="#__codelineno-0-477">477</a></span>
+<span class="normal"><a href="#__codelineno-0-478">478</a></span>
+<span class="normal"><a href="#__codelineno-0-479">479</a></span>
+<span class="normal"><a href="#__codelineno-0-480">480</a></span>
+<span class="normal"><a href="#__codelineno-0-481">481</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-259" name="__codelineno-0-259"></a><span class="k">class</span> <span class="nc">TimeBasedSplit</span><span class="p">(</span><span class="n">_CoreTimeBasedSplit</span><span class="p">):</span>
+<a id="__codelineno-0-260" name="__codelineno-0-260"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Class that generates splits based on time values, independently from the number of samples in each split.</span>
+<a id="__codelineno-0-261" name="__codelineno-0-261"></a>
+<a id="__codelineno-0-262" name="__codelineno-0-262"></a><span class="sd">    Arguments:</span>
+<a id="__codelineno-0-263" name="__codelineno-0-263"></a><span class="sd">        frequency: The frequency of the time series. Must be one of &quot;days&quot;, &quot;seconds&quot;, &quot;microseconds&quot;, &quot;milliseconds&quot;,</span>
+<a id="__codelineno-0-264" name="__codelineno-0-264"></a><span class="sd">            &quot;minutes&quot;, &quot;hours&quot;, &quot;weeks&quot;. These are the only valid values for the `unit` argument of `timedelta` from</span>
+<a id="__codelineno-0-265" name="__codelineno-0-265"></a><span class="sd">            python `datetime` standard library.</span>
+<a id="__codelineno-0-266" name="__codelineno-0-266"></a><span class="sd">        train_size: The size of the training set.</span>
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a><span class="sd">        forecast_horizon: The size of the forecast horizon, i.e. the size of the test set.</span>
+<a id="__codelineno-0-268" name="__codelineno-0-268"></a><span class="sd">        gap: The size of the gap between the training set and the forecast horizon.</span>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a><span class="sd">        stride: The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),</span>
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a><span class="sd">            it fallbacks to the `forecast_horizon` quantity.</span>
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a><span class="sd">        window: The type of window to use, either &quot;rolling&quot; or &quot;expanding&quot;.</span>
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a><span class="sd">        mode: Determines in which orders the splits are generated, either &quot;forward&quot; or &quot;backward&quot;.</span>
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>
+<a id="__codelineno-0-274" name="__codelineno-0-274"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-275" name="__codelineno-0-275"></a><span class="sd">        ValueError: If `frequency` is not one of &quot;days&quot;, &quot;seconds&quot;, &quot;microseconds&quot;, &quot;milliseconds&quot;, &quot;minutes&quot;, &quot;hours&quot;,</span>
+<a id="__codelineno-0-276" name="__codelineno-0-276"></a><span class="sd">            &quot;weeks&quot;.</span>
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a><span class="sd">        ValueError: If `window` is not one of &quot;rolling&quot; or &quot;expanding&quot;.</span>
+<a id="__codelineno-0-278" name="__codelineno-0-278"></a><span class="sd">        TypeError: If `train_size`, `forecast_horizon`, `gap` or `stride` are not of type `int`.</span>
+<a id="__codelineno-0-279" name="__codelineno-0-279"></a><span class="sd">        ValueError: If `train_size`, `forecast_horizon`, `gap` or `stride` are not strictly positive.</span>
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a>
+<a id="__codelineno-0-281" name="__codelineno-0-281"></a><span class="sd">    Usage:</span>
+<a id="__codelineno-0-282" name="__codelineno-0-282"></a><span class="sd">    ```python</span>
+<a id="__codelineno-0-283" name="__codelineno-0-283"></a><span class="sd">    import pandas as pd</span>
+<a id="__codelineno-0-284" name="__codelineno-0-284"></a><span class="sd">    import numpy as np</span>
+<a id="__codelineno-0-285" name="__codelineno-0-285"></a>
+<a id="__codelineno-0-286" name="__codelineno-0-286"></a><span class="sd">    from timebasedcv import TimeBasedSplit</span>
+<a id="__codelineno-0-287" name="__codelineno-0-287"></a>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="sd">    tbs = TimeBasedSplit(</span>
+<a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="sd">        frequency=&quot;days&quot;,</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a><span class="sd">        train_size=30,</span>
+<a id="__codelineno-0-291" name="__codelineno-0-291"></a><span class="sd">        forecast_horizon=7,</span>
+<a id="__codelineno-0-292" name="__codelineno-0-292"></a><span class="sd">        gap=0,</span>
+<a id="__codelineno-0-293" name="__codelineno-0-293"></a><span class="sd">        stride=3,</span>
+<a id="__codelineno-0-294" name="__codelineno-0-294"></a><span class="sd">        window=&quot;rolling&quot;,</span>
+<a id="__codelineno-0-295" name="__codelineno-0-295"></a><span class="sd">    )</span>
+<a id="__codelineno-0-296" name="__codelineno-0-296"></a>
+<a id="__codelineno-0-297" name="__codelineno-0-297"></a><span class="sd">    dates = pd.Series(pd.date_range(&quot;2023-01-01&quot;, &quot;2023-12-31&quot;, freq=&quot;D&quot;))</span>
+<a id="__codelineno-0-298" name="__codelineno-0-298"></a><span class="sd">    size = len(dates)</span>
+<a id="__codelineno-0-299" name="__codelineno-0-299"></a>
+<a id="__codelineno-0-300" name="__codelineno-0-300"></a><span class="sd">    df = pd.DataFrame(data=np.random.randn(size, 2), columns=[&quot;a&quot;, &quot;b&quot;]).assign(y=lambda t: t[[&quot;a&quot;, &quot;b&quot;]].sum(axis=1))</span>
+<a id="__codelineno-0-301" name="__codelineno-0-301"></a>
+<a id="__codelineno-0-302" name="__codelineno-0-302"></a><span class="sd">    X, y = df[[&quot;a&quot;, &quot;b&quot;]], df[&quot;y&quot;]</span>
+<a id="__codelineno-0-303" name="__codelineno-0-303"></a>
+<a id="__codelineno-0-304" name="__codelineno-0-304"></a><span class="sd">    print(f&quot;Number of splits: {tbs.n_splits_of(time_series=dates)}&quot;)</span>
+<a id="__codelineno-0-305" name="__codelineno-0-305"></a>
+<a id="__codelineno-0-306" name="__codelineno-0-306"></a><span class="sd">    for X_train, X_forecast, y_train, y_forecast in tbs.split(X, y, time_series=dates):</span>
+<a id="__codelineno-0-307" name="__codelineno-0-307"></a><span class="sd">        print(f&quot;Train: {X_train.shape}, Forecast: {X_forecast.shape}&quot;)</span>
+<a id="__codelineno-0-308" name="__codelineno-0-308"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-309" name="__codelineno-0-309"></a>
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="sd">    A few examples on how splits are generated given the parameters. Let:</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>
+<a id="__codelineno-0-312" name="__codelineno-0-312"></a><span class="sd">    - `=` : train period unit</span>
+<a id="__codelineno-0-313" name="__codelineno-0-313"></a><span class="sd">    - `*` : forecast period unit</span>
+<a id="__codelineno-0-314" name="__codelineno-0-314"></a><span class="sd">    - `/` : gap period unit</span>
+<a id="__codelineno-0-315" name="__codelineno-0-315"></a><span class="sd">    - `&gt;` : stride period unit (absorbed in `=` if `window=&quot;expanding&quot;`)</span>
+<a id="__codelineno-0-316" name="__codelineno-0-316"></a>
+<a id="__codelineno-0-317" name="__codelineno-0-317"></a><span class="sd">    Recall also that if `stride` is not provided, it is set to `forecast_horizon`:</span>
+<a id="__codelineno-0-318" name="__codelineno-0-318"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-319" name="__codelineno-0-319"></a><span class="sd">    train_size, forecast_horizon, gap, stride, window = (4, 3, 0, None, &quot;rolling&quot;)</span>
+<a id="__codelineno-0-320" name="__codelineno-0-320"></a><span class="sd">    | ======= *****               |</span>
+<a id="__codelineno-0-321" name="__codelineno-0-321"></a><span class="sd">    | &gt;&gt;&gt;&gt;&gt; ======= *****         |</span>
+<a id="__codelineno-0-322" name="__codelineno-0-322"></a><span class="sd">    |       &gt;&gt;&gt;&gt;&gt; ======= *****   |</span>
+<a id="__codelineno-0-323" name="__codelineno-0-323"></a><span class="sd">    |             &gt;&gt;&gt;&gt;&gt; ======= * |</span>
+<a id="__codelineno-0-324" name="__codelineno-0-324"></a>
+<a id="__codelineno-0-325" name="__codelineno-0-325"></a><span class="sd">    train_size, forecast_horizon, gap, stride, window = (4, 3, 2, 2, &quot;rolling&quot;)</span>
+<a id="__codelineno-0-326" name="__codelineno-0-326"></a>
+<a id="__codelineno-0-327" name="__codelineno-0-327"></a><span class="sd">    | ======= /// *****           |</span>
+<a id="__codelineno-0-328" name="__codelineno-0-328"></a><span class="sd">    | &gt;&gt;&gt; ======= /// *****       |</span>
+<a id="__codelineno-0-329" name="__codelineno-0-329"></a><span class="sd">    |     &gt;&gt;&gt; ======= /// *****   |</span>
+<a id="__codelineno-0-330" name="__codelineno-0-330"></a><span class="sd">    |         &gt;&gt;&gt; ======= /// *** |</span>
+<a id="__codelineno-0-331" name="__codelineno-0-331"></a>
+<a id="__codelineno-0-332" name="__codelineno-0-332"></a><span class="sd">    train_size, forecast_horizon, gap, stride, window = (4, 3, 2, 2, &quot;expanding&quot;)</span>
+<a id="__codelineno-0-333" name="__codelineno-0-333"></a><span class="sd">    | ======= /// *****           |</span>
+<a id="__codelineno-0-334" name="__codelineno-0-334"></a><span class="sd">    | =========== /// *****       |</span>
+<a id="__codelineno-0-335" name="__codelineno-0-335"></a><span class="sd">    | =============== /// *****   |</span>
+<a id="__codelineno-0-336" name="__codelineno-0-336"></a><span class="sd">    | =================== /// *** |</span>
+<a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="sd">    ```</span>
+<a id="__codelineno-0-338" name="__codelineno-0-338"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-339" name="__codelineno-0-339"></a>
+<a id="__codelineno-0-340" name="__codelineno-0-340"></a>    <span class="n">name_</span> <span class="o">=</span> <span class="s2">&quot;TimeBasedSplit&quot;</span>
+<a id="__codelineno-0-341" name="__codelineno-0-341"></a>
+<a id="__codelineno-0-342" name="__codelineno-0-342"></a>    <span class="nd">@overload</span>
+<a id="__codelineno-0-343" name="__codelineno-0-343"></a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span>
+<a id="__codelineno-0-344" name="__codelineno-0-344"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-345" name="__codelineno-0-345"></a>        <span class="o">*</span><span class="n">arrays</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+<a id="__codelineno-0-346" name="__codelineno-0-346"></a>        <span class="n">time_series</span><span class="p">:</span> <span class="n">SeriesLike</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">],</span>
+<a id="__codelineno-0-347" name="__codelineno-0-347"></a>        <span class="n">start_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-348" name="__codelineno-0-348"></a>        <span class="n">end_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-349" name="__codelineno-0-349"></a>        <span class="n">return_splitstate</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">],</span>
+<a id="__codelineno-0-350" name="__codelineno-0-350"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span> <span class="o">...</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-351" name="__codelineno-0-351"></a>
+<a id="__codelineno-0-352" name="__codelineno-0-352"></a>    <span class="nd">@overload</span>
+<a id="__codelineno-0-353" name="__codelineno-0-353"></a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span>
+<a id="__codelineno-0-354" name="__codelineno-0-354"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-355" name="__codelineno-0-355"></a>        <span class="o">*</span><span class="n">arrays</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+<a id="__codelineno-0-356" name="__codelineno-0-356"></a>        <span class="n">time_series</span><span class="p">:</span> <span class="n">SeriesLike</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">],</span>
+<a id="__codelineno-0-357" name="__codelineno-0-357"></a>        <span class="n">start_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-358" name="__codelineno-0-358"></a>        <span class="n">end_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-359" name="__codelineno-0-359"></a>        <span class="n">return_splitstate</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">],</span>
+<a id="__codelineno-0-360" name="__codelineno-0-360"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">SplitState</span><span class="p">],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span> <span class="o">...</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-361" name="__codelineno-0-361"></a>
+<a id="__codelineno-0-362" name="__codelineno-0-362"></a>    <span class="nd">@overload</span>
+<a id="__codelineno-0-363" name="__codelineno-0-363"></a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span>
+<a id="__codelineno-0-364" name="__codelineno-0-364"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-365" name="__codelineno-0-365"></a>        <span class="o">*</span><span class="n">arrays</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+<a id="__codelineno-0-366" name="__codelineno-0-366"></a>        <span class="n">time_series</span><span class="p">:</span> <span class="n">SeriesLike</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">],</span>
+<a id="__codelineno-0-367" name="__codelineno-0-367"></a>        <span class="n">start_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-368" name="__codelineno-0-368"></a>        <span class="n">end_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-369" name="__codelineno-0-369"></a>        <span class="n">return_splitstate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-370" name="__codelineno-0-370"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span>
+<a id="__codelineno-0-371" name="__codelineno-0-371"></a>        <span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">SplitState</span><span class="p">]],</span>
+<a id="__codelineno-0-372" name="__codelineno-0-372"></a>        <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-373" name="__codelineno-0-373"></a>        <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-374" name="__codelineno-0-374"></a>    <span class="p">]:</span> <span class="o">...</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-375" name="__codelineno-0-375"></a>
+<a id="__codelineno-0-376" name="__codelineno-0-376"></a>    <span class="k">def</span> <span class="nf">split</span><span class="p">(</span>
+<a id="__codelineno-0-377" name="__codelineno-0-377"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-378" name="__codelineno-0-378"></a>        <span class="o">*</span><span class="n">arrays</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+<a id="__codelineno-0-379" name="__codelineno-0-379"></a>        <span class="n">time_series</span><span class="p">:</span> <span class="n">SeriesLike</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">],</span>
+<a id="__codelineno-0-380" name="__codelineno-0-380"></a>        <span class="n">start_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-381" name="__codelineno-0-381"></a>        <span class="n">end_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-382" name="__codelineno-0-382"></a>        <span class="n">return_splitstate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-383" name="__codelineno-0-383"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">SplitState</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<a id="__codelineno-0-384" name="__codelineno-0-384"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a generator of split arrays based on the `time_series`.</span>
+<a id="__codelineno-0-385" name="__codelineno-0-385"></a>
+<a id="__codelineno-0-386" name="__codelineno-0-386"></a><span class="sd">        The `time_series` argument is split on split state values to create boolean masks for training - from train_</span>
+<a id="__codelineno-0-387" name="__codelineno-0-387"></a><span class="sd">        start (included) to train_end (excluded) - and forecast - from forecast_start (included) to forecast_end</span>
+<a id="__codelineno-0-388" name="__codelineno-0-388"></a><span class="sd">        (excluded). These masks are then used to index the arrays passed as arguments.</span>
+<a id="__codelineno-0-389" name="__codelineno-0-389"></a>
+<a id="__codelineno-0-390" name="__codelineno-0-390"></a><span class="sd">        The `start_dt` and `end_dt` arguments can be used to specify the start and end of the time period. If provided,</span>
+<a id="__codelineno-0-391" name="__codelineno-0-391"></a><span class="sd">        they are used in place of the `time_series.min()` and `time_series.max()` respectively.</span>
+<a id="__codelineno-0-392" name="__codelineno-0-392"></a>
+<a id="__codelineno-0-393" name="__codelineno-0-393"></a><span class="sd">        This is useful because the series does not necessarely starts from the first date and/or terminates in the last</span>
+<a id="__codelineno-0-394" name="__codelineno-0-394"></a><span class="sd">        date of the time period of interest.</span>
+<a id="__codelineno-0-395" name="__codelineno-0-395"></a>
+<a id="__codelineno-0-396" name="__codelineno-0-396"></a><span class="sd">        The `return_splitstate` argument can be used to return the `SplitState` instance for each split. This can be</span>
+<a id="__codelineno-0-397" name="__codelineno-0-397"></a><span class="sd">        useful if a particular logic has to be applied only on specific cases (e.g. if first day of the week, then</span>
+<a id="__codelineno-0-398" name="__codelineno-0-398"></a><span class="sd">        retrain a model).</span>
+<a id="__codelineno-0-399" name="__codelineno-0-399"></a>
+<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">        By returning the split state, the user has the freedom and flexibility to apply any logic.</span>
+<a id="__codelineno-0-401" name="__codelineno-0-401"></a>
+<a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">        Arguments:</span>
+<a id="__codelineno-0-403" name="__codelineno-0-403"></a><span class="sd">            *arrays: The arrays to split. Must have the same length as `time_series`.</span>
+<a id="__codelineno-0-404" name="__codelineno-0-404"></a><span class="sd">            time_series: The time series used to create boolean mask for splits. It is not required to be sorted, but it</span>
+<a id="__codelineno-0-405" name="__codelineno-0-405"></a><span class="sd">                must support:</span>
+<a id="__codelineno-0-406" name="__codelineno-0-406"></a>
+<a id="__codelineno-0-407" name="__codelineno-0-407"></a><span class="sd">                - comparison operators (with other date-like objects).</span>
+<a id="__codelineno-0-408" name="__codelineno-0-408"></a><span class="sd">                - bitwise operators (with other boolean arrays).</span>
+<a id="__codelineno-0-409" name="__codelineno-0-409"></a><span class="sd">                - `.min()` and `.max()` methods.</span>
+<a id="__codelineno-0-410" name="__codelineno-0-410"></a><span class="sd">                - `.shape` attribute.</span>
+<a id="__codelineno-0-411" name="__codelineno-0-411"></a><span class="sd">            start_dt: The start of the time period. If provided, it is used in place of the `time_series.min()`.</span>
+<a id="__codelineno-0-412" name="__codelineno-0-412"></a><span class="sd">            end_dt: The end of the time period. If provided,it is used in place of the `time_series.max()`.</span>
+<a id="__codelineno-0-413" name="__codelineno-0-413"></a><span class="sd">            return_splitstate: Whether to return the `SplitState` instance for each split.</span>
+<a id="__codelineno-0-414" name="__codelineno-0-414"></a>
+<a id="__codelineno-0-415" name="__codelineno-0-415"></a><span class="sd">                - If True, the generator yields tuples of the form `(train_forecast_arrays, split_state)`, where</span>
+<a id="__codelineno-0-416" name="__codelineno-0-416"></a><span class="sd">                `train_forecast_arrays` is a tuple of arrays containing the training and forecast data, and</span>
+<a id="__codelineno-0-417" name="__codelineno-0-417"></a><span class="sd">                `split_state` is a `SplitState` instance representing the current split.</span>
+<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">                - If False, the generator yields tuples of the form `train_forecast_arrays`.</span>
+<a id="__codelineno-0-419" name="__codelineno-0-419"></a>
+<a id="__codelineno-0-420" name="__codelineno-0-420"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-421" name="__codelineno-0-421"></a><span class="sd">            A generator of tuples of arrays containing the training and forecast data.</span>
+<a id="__codelineno-0-422" name="__codelineno-0-422"></a><span class="sd">                Each tuple corresponds to a split generated by the `TimeBasedSplit` instance. If `return_splitstate` is</span>
+<a id="__codelineno-0-423" name="__codelineno-0-423"></a><span class="sd">                True, each tuple is of the form `(train_forecast_arrays, split_state)`, othersiwe it is of the form</span>
+<a id="__codelineno-0-424" name="__codelineno-0-424"></a><span class="sd">                `train_forecast_arrays`.</span>
+<a id="__codelineno-0-425" name="__codelineno-0-425"></a>
+<a id="__codelineno-0-426" name="__codelineno-0-426"></a><span class="sd">        Raises:</span>
+<a id="__codelineno-0-427" name="__codelineno-0-427"></a><span class="sd">            ValueError: If no arrays are provided as input.</span>
+<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">            ValueError: If the arrays provided have different lengths.</span>
+<a id="__codelineno-0-429" name="__codelineno-0-429"></a><span class="sd">            ValueError: If the length of the time series does not match the length of the arrays.</span>
+<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-431" name="__codelineno-0-431"></a>        <span class="n">n_arrays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span>
+<a id="__codelineno-0-432" name="__codelineno-0-432"></a>        <span class="k">if</span> <span class="n">n_arrays</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-433" name="__codelineno-0-433"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;At least one array required as input&quot;</span>
+<a id="__codelineno-0-434" name="__codelineno-0-434"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-435" name="__codelineno-0-435"></a>
+<a id="__codelineno-0-436" name="__codelineno-0-436"></a>        <span class="n">ts_shape</span> <span class="o">=</span> <span class="n">time_series</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-437" name="__codelineno-0-437"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-0-438" name="__codelineno-0-438"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Time series must be 1-dimensional. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_shape</span><span class="p">)</span><span class="si">}</span><span class="s2"> dimensions.&quot;</span>
+<a id="__codelineno-0-439" name="__codelineno-0-439"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-440" name="__codelineno-0-440"></a>
+<a id="__codelineno-0-441" name="__codelineno-0-441"></a>        <span class="n">arrays_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">nw</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">nw</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+<a id="__codelineno-0-442" name="__codelineno-0-442"></a>            <span class="n">nw</span><span class="o">.</span><span class="n">from_native</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">eager_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_series</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">arrays</span>
+<a id="__codelineno-0-443" name="__codelineno-0-443"></a>        <span class="p">)</span>
+<a id="__codelineno-0-444" name="__codelineno-0-444"></a>        <span class="n">time_series_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">nw</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="n">nw</span><span class="o">.</span><span class="n">from_native</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">series_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-445" name="__codelineno-0-445"></a>
+<a id="__codelineno-0-446" name="__codelineno-0-446"></a>        <span class="n">a0</span> <span class="o">=</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-447" name="__codelineno-0-447"></a>        <span class="n">arr_len</span> <span class="o">=</span> <span class="n">a0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-448" name="__codelineno-0-448"></a>
+<a id="__codelineno-0-449" name="__codelineno-0-449"></a>        <span class="k">if</span> <span class="n">n_arrays</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">arr_len</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arrays_</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+<a id="__codelineno-0-450" name="__codelineno-0-450"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;All arrays must have the same length. Got </span><span class="si">{</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">arrays_</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-451" name="__codelineno-0-451"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-452" name="__codelineno-0-452"></a>
+<a id="__codelineno-0-453" name="__codelineno-0-453"></a>        <span class="k">if</span> <span class="n">arr_len</span> <span class="o">!=</span> <span class="n">ts_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<a id="__codelineno-0-454" name="__codelineno-0-454"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Time series and arrays must have the same length. Got </span><span class="si">{</span><span class="n">arr_len</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">ts_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-455" name="__codelineno-0-455"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-456" name="__codelineno-0-456"></a>
+<a id="__codelineno-0-457" name="__codelineno-0-457"></a>        <span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span> <span class="o">=</span> <span class="n">start_dt</span> <span class="ow">or</span> <span class="n">time_series_</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end_dt</span> <span class="ow">or</span> <span class="n">time_series_</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<a id="__codelineno-0-458" name="__codelineno-0-458"></a>
+<a id="__codelineno-0-459" name="__codelineno-0-459"></a>        <span class="k">if</span> <span class="n">time_start</span> <span class="o">&gt;=</span> <span class="n">time_end</span><span class="p">:</span>
+<a id="__codelineno-0-460" name="__codelineno-0-460"></a>            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;`time_start` must be before `time_end`.&quot;</span>
+<a id="__codelineno-0-461" name="__codelineno-0-461"></a>            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-462" name="__codelineno-0-462"></a>
+<a id="__codelineno-0-463" name="__codelineno-0-463"></a>        <span class="n">_index_methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">BACKEND_TO_INDEXING_METHOD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="n">default_indexing_method</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arrays_</span><span class="p">)</span>
+<a id="__codelineno-0-464" name="__codelineno-0-464"></a>        <span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splits_from_period</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">):</span>
+<a id="__codelineno-0-465" name="__codelineno-0-465"></a>            <span class="n">train_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&gt;=</span> <span class="n">split</span><span class="o">.</span><span class="n">train_start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&lt;</span> <span class="n">split</span><span class="o">.</span><span class="n">train_end</span><span class="p">)</span>
+<a id="__codelineno-0-466" name="__codelineno-0-466"></a>            <span class="n">forecast_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&gt;=</span> <span class="n">split</span><span class="o">.</span><span class="n">forecast_start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&lt;</span> <span class="n">split</span><span class="o">.</span><span class="n">forecast_end</span><span class="p">)</span>
+<a id="__codelineno-0-467" name="__codelineno-0-467"></a>
+<a id="__codelineno-0-468" name="__codelineno-0-468"></a>            <span class="n">train_forecast_arrays</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+<a id="__codelineno-0-469" name="__codelineno-0-469"></a>                <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+<a id="__codelineno-0-470" name="__codelineno-0-470"></a>                    <span class="p">(</span>
+<a id="__codelineno-0-471" name="__codelineno-0-471"></a>                        <span class="n">nw</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">_idx_method</span><span class="p">(</span><span class="n">_arr</span><span class="p">,</span> <span class="n">train_mask</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<a id="__codelineno-0-472" name="__codelineno-0-472"></a>                        <span class="n">nw</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">_idx_method</span><span class="p">(</span><span class="n">_arr</span><span class="p">,</span> <span class="n">forecast_mask</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<a id="__codelineno-0-473" name="__codelineno-0-473"></a>                    <span class="p">)</span>
+<a id="__codelineno-0-474" name="__codelineno-0-474"></a>                    <span class="k">for</span> <span class="n">_arr</span><span class="p">,</span> <span class="n">_idx_method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">arrays_</span><span class="p">,</span> <span class="n">_index_methods</span><span class="p">)</span>
+<a id="__codelineno-0-475" name="__codelineno-0-475"></a>                <span class="p">),</span>
+<a id="__codelineno-0-476" name="__codelineno-0-476"></a>            <span class="p">)</span>
+<a id="__codelineno-0-477" name="__codelineno-0-477"></a>
+<a id="__codelineno-0-478" name="__codelineno-0-478"></a>            <span class="k">if</span> <span class="n">return_splitstate</span><span class="p">:</span>
+<a id="__codelineno-0-479" name="__codelineno-0-479"></a>                <span class="k">yield</span> <span class="n">train_forecast_arrays</span><span class="p">,</span> <span class="n">split</span>
+<a id="__codelineno-0-480" name="__codelineno-0-480"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-481" name="__codelineno-0-481"></a>                <span class="k">yield</span> <span class="n">train_forecast_arrays</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="timebasedcv.core.TimeBasedSplit.split" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">split</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">,</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">start_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_splitstate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+<a href="#timebasedcv.core.TimeBasedSplit.split" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+      <p>Returns a generator of split arrays based on the <code>time_series</code>.</p>
+<p>The <code>time_series</code> argument is split on split state values to create boolean masks for training - from train_
+start (included) to train_end (excluded) - and forecast - from forecast_start (included) to forecast_end
+(excluded). These masks are then used to index the arrays passed as arguments.</p>
+<p>The <code>start_dt</code> and <code>end_dt</code> arguments can be used to specify the start and end of the time period. If provided,
+they are used in place of the <code>time_series.min()</code> and <code>time_series.max()</code> respectively.</p>
+<p>This is useful because the series does not necessarely starts from the first date and/or terminates in the last
+date of the time period of interest.</p>
+<p>The <code>return_splitstate</code> argument can be used to return the <code>SplitState</code> instance for each split. This can be
+useful if a particular logic has to be applied only on specific cases (e.g. if first day of the week, then
+retrain a model).</p>
+<p>By returning the split state, the user has the freedom and flexibility to apply any logic.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code>*arrays</code></td>
+            <td>
+                  <code><span title="timebasedcv.core.TL">TL</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The arrays to split. Must have the same length as <code>time_series</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>()</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>time_series</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.SeriesLike">SeriesLike</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The time series used to create boolean mask for splits. It is not required to be sorted, but it
+must support:</p>
+<ul>
+<li>comparison operators (with other date-like objects).</li>
+<li>bitwise operators (with other boolean arrays).</li>
+<li><code>.min()</code> and <code>.max()</code> methods.</li>
+<li><code>.shape</code> attribute.</li>
+</ul>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>start_dt</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The start of the time period. If provided, it is used in place of the <code>time_series.min()</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>end_dt</code></td>
+            <td>
+                  <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The end of the time period. If provided,it is used in place of the <code>time_series.max()</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code>return_splitstate</code></td>
+            <td>
+                  <code>bool</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Whether to return the <code>SplitState</code> instance for each split.</p>
+<ul>
+<li>If True, the generator yields tuples of the form <code>(train_forecast_arrays, split_state)</code>, where
+<code>train_forecast_arrays</code> is a tuple of arrays containing the training and forecast data, and
+<code>split_state</code> is a <code>SplitState</code> instance representing the current split.</li>
+<li>If False, the generator yields tuples of the form <code>train_forecast_arrays</code>.</li>
+</ul>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="typing.Generator">Generator</span>[<span title="typing.Union">Union</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <span title="typing.Tuple">Tuple</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <a class="autorefs autorefs-internal" title="timebasedcv.splitstate.SplitState" href="../splitstate/#timebasedcv.splitstate.SplitState">SplitState</a>]], None, None]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A generator of tuples of arrays containing the training and forecast data.
+Each tuple corresponds to a split generated by the <code>TimeBasedSplit</code> instance. If <code>return_splitstate</code> is
+True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code>, othersiwe it is of the form
+<code>train_forecast_arrays</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If no arrays are provided as input.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the arrays provided have different lengths.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code>ValueError</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the length of the time series does not match the length of the arrays.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-376">376</a></span>
+<span class="normal"><a href="#__codelineno-0-377">377</a></span>
+<span class="normal"><a href="#__codelineno-0-378">378</a></span>
+<span class="normal"><a href="#__codelineno-0-379">379</a></span>
+<span class="normal"><a href="#__codelineno-0-380">380</a></span>
+<span class="normal"><a href="#__codelineno-0-381">381</a></span>
+<span class="normal"><a href="#__codelineno-0-382">382</a></span>
+<span class="normal"><a href="#__codelineno-0-383">383</a></span>
+<span class="normal"><a href="#__codelineno-0-384">384</a></span>
+<span class="normal"><a href="#__codelineno-0-385">385</a></span>
+<span class="normal"><a href="#__codelineno-0-386">386</a></span>
+<span class="normal"><a href="#__codelineno-0-387">387</a></span>
+<span class="normal"><a href="#__codelineno-0-388">388</a></span>
+<span class="normal"><a href="#__codelineno-0-389">389</a></span>
+<span class="normal"><a href="#__codelineno-0-390">390</a></span>
+<span class="normal"><a href="#__codelineno-0-391">391</a></span>
+<span class="normal"><a href="#__codelineno-0-392">392</a></span>
+<span class="normal"><a href="#__codelineno-0-393">393</a></span>
+<span class="normal"><a href="#__codelineno-0-394">394</a></span>
+<span class="normal"><a href="#__codelineno-0-395">395</a></span>
+<span class="normal"><a href="#__codelineno-0-396">396</a></span>
+<span class="normal"><a href="#__codelineno-0-397">397</a></span>
+<span class="normal"><a href="#__codelineno-0-398">398</a></span>
+<span class="normal"><a href="#__codelineno-0-399">399</a></span>
+<span class="normal"><a href="#__codelineno-0-400">400</a></span>
+<span class="normal"><a href="#__codelineno-0-401">401</a></span>
+<span class="normal"><a href="#__codelineno-0-402">402</a></span>
+<span class="normal"><a href="#__codelineno-0-403">403</a></span>
+<span class="normal"><a href="#__codelineno-0-404">404</a></span>
+<span class="normal"><a href="#__codelineno-0-405">405</a></span>
+<span class="normal"><a href="#__codelineno-0-406">406</a></span>
+<span class="normal"><a href="#__codelineno-0-407">407</a></span>
+<span class="normal"><a href="#__codelineno-0-408">408</a></span>
+<span class="normal"><a href="#__codelineno-0-409">409</a></span>
+<span class="normal"><a href="#__codelineno-0-410">410</a></span>
+<span class="normal"><a href="#__codelineno-0-411">411</a></span>
+<span class="normal"><a href="#__codelineno-0-412">412</a></span>
+<span class="normal"><a href="#__codelineno-0-413">413</a></span>
+<span class="normal"><a href="#__codelineno-0-414">414</a></span>
+<span class="normal"><a href="#__codelineno-0-415">415</a></span>
+<span class="normal"><a href="#__codelineno-0-416">416</a></span>
+<span class="normal"><a href="#__codelineno-0-417">417</a></span>
+<span class="normal"><a href="#__codelineno-0-418">418</a></span>
+<span class="normal"><a href="#__codelineno-0-419">419</a></span>
+<span class="normal"><a href="#__codelineno-0-420">420</a></span>
+<span class="normal"><a href="#__codelineno-0-421">421</a></span>
+<span class="normal"><a href="#__codelineno-0-422">422</a></span>
+<span class="normal"><a href="#__codelineno-0-423">423</a></span>
+<span class="normal"><a href="#__codelineno-0-424">424</a></span>
+<span class="normal"><a href="#__codelineno-0-425">425</a></span>
+<span class="normal"><a href="#__codelineno-0-426">426</a></span>
+<span class="normal"><a href="#__codelineno-0-427">427</a></span>
+<span class="normal"><a href="#__codelineno-0-428">428</a></span>
+<span class="normal"><a href="#__codelineno-0-429">429</a></span>
+<span class="normal"><a href="#__codelineno-0-430">430</a></span>
+<span class="normal"><a href="#__codelineno-0-431">431</a></span>
+<span class="normal"><a href="#__codelineno-0-432">432</a></span>
+<span class="normal"><a href="#__codelineno-0-433">433</a></span>
+<span class="normal"><a href="#__codelineno-0-434">434</a></span>
+<span class="normal"><a href="#__codelineno-0-435">435</a></span>
+<span class="normal"><a href="#__codelineno-0-436">436</a></span>
+<span class="normal"><a href="#__codelineno-0-437">437</a></span>
+<span class="normal"><a href="#__codelineno-0-438">438</a></span>
+<span class="normal"><a href="#__codelineno-0-439">439</a></span>
+<span class="normal"><a href="#__codelineno-0-440">440</a></span>
+<span class="normal"><a href="#__codelineno-0-441">441</a></span>
+<span class="normal"><a href="#__codelineno-0-442">442</a></span>
+<span class="normal"><a href="#__codelineno-0-443">443</a></span>
+<span class="normal"><a href="#__codelineno-0-444">444</a></span>
+<span class="normal"><a href="#__codelineno-0-445">445</a></span>
+<span class="normal"><a href="#__codelineno-0-446">446</a></span>
+<span class="normal"><a href="#__codelineno-0-447">447</a></span>
+<span class="normal"><a href="#__codelineno-0-448">448</a></span>
+<span class="normal"><a href="#__codelineno-0-449">449</a></span>
+<span class="normal"><a href="#__codelineno-0-450">450</a></span>
+<span class="normal"><a href="#__codelineno-0-451">451</a></span>
+<span class="normal"><a href="#__codelineno-0-452">452</a></span>
+<span class="normal"><a href="#__codelineno-0-453">453</a></span>
+<span class="normal"><a href="#__codelineno-0-454">454</a></span>
+<span class="normal"><a href="#__codelineno-0-455">455</a></span>
+<span class="normal"><a href="#__codelineno-0-456">456</a></span>
+<span class="normal"><a href="#__codelineno-0-457">457</a></span>
+<span class="normal"><a href="#__codelineno-0-458">458</a></span>
+<span class="normal"><a href="#__codelineno-0-459">459</a></span>
+<span class="normal"><a href="#__codelineno-0-460">460</a></span>
+<span class="normal"><a href="#__codelineno-0-461">461</a></span>
+<span class="normal"><a href="#__codelineno-0-462">462</a></span>
+<span class="normal"><a href="#__codelineno-0-463">463</a></span>
+<span class="normal"><a href="#__codelineno-0-464">464</a></span>
+<span class="normal"><a href="#__codelineno-0-465">465</a></span>
+<span class="normal"><a href="#__codelineno-0-466">466</a></span>
+<span class="normal"><a href="#__codelineno-0-467">467</a></span>
+<span class="normal"><a href="#__codelineno-0-468">468</a></span>
+<span class="normal"><a href="#__codelineno-0-469">469</a></span>
+<span class="normal"><a href="#__codelineno-0-470">470</a></span>
+<span class="normal"><a href="#__codelineno-0-471">471</a></span>
+<span class="normal"><a href="#__codelineno-0-472">472</a></span>
+<span class="normal"><a href="#__codelineno-0-473">473</a></span>
+<span class="normal"><a href="#__codelineno-0-474">474</a></span>
+<span class="normal"><a href="#__codelineno-0-475">475</a></span>
+<span class="normal"><a href="#__codelineno-0-476">476</a></span>
+<span class="normal"><a href="#__codelineno-0-477">477</a></span>
+<span class="normal"><a href="#__codelineno-0-478">478</a></span>
+<span class="normal"><a href="#__codelineno-0-479">479</a></span>
+<span class="normal"><a href="#__codelineno-0-480">480</a></span>
+<span class="normal"><a href="#__codelineno-0-481">481</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-376" name="__codelineno-0-376"></a><span class="k">def</span> <span class="nf">split</span><span class="p">(</span>
+<a id="__codelineno-0-377" name="__codelineno-0-377"></a>    <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-378" name="__codelineno-0-378"></a>    <span class="o">*</span><span class="n">arrays</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+<a id="__codelineno-0-379" name="__codelineno-0-379"></a>    <span class="n">time_series</span><span class="p">:</span> <span class="n">SeriesLike</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">],</span>
+<a id="__codelineno-0-380" name="__codelineno-0-380"></a>    <span class="n">start_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-381" name="__codelineno-0-381"></a>    <span class="n">end_dt</span><span class="p">:</span> <span class="n">NullableDatetime</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-382" name="__codelineno-0-382"></a>    <span class="n">return_splitstate</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-0-383" name="__codelineno-0-383"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">TL</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">SplitState</span><span class="p">]],</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+<a id="__codelineno-0-384" name="__codelineno-0-384"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a generator of split arrays based on the `time_series`.</span>
+<a id="__codelineno-0-385" name="__codelineno-0-385"></a>
+<a id="__codelineno-0-386" name="__codelineno-0-386"></a><span class="sd">    The `time_series` argument is split on split state values to create boolean masks for training - from train_</span>
+<a id="__codelineno-0-387" name="__codelineno-0-387"></a><span class="sd">    start (included) to train_end (excluded) - and forecast - from forecast_start (included) to forecast_end</span>
+<a id="__codelineno-0-388" name="__codelineno-0-388"></a><span class="sd">    (excluded). These masks are then used to index the arrays passed as arguments.</span>
+<a id="__codelineno-0-389" name="__codelineno-0-389"></a>
+<a id="__codelineno-0-390" name="__codelineno-0-390"></a><span class="sd">    The `start_dt` and `end_dt` arguments can be used to specify the start and end of the time period. If provided,</span>
+<a id="__codelineno-0-391" name="__codelineno-0-391"></a><span class="sd">    they are used in place of the `time_series.min()` and `time_series.max()` respectively.</span>
+<a id="__codelineno-0-392" name="__codelineno-0-392"></a>
+<a id="__codelineno-0-393" name="__codelineno-0-393"></a><span class="sd">    This is useful because the series does not necessarely starts from the first date and/or terminates in the last</span>
+<a id="__codelineno-0-394" name="__codelineno-0-394"></a><span class="sd">    date of the time period of interest.</span>
+<a id="__codelineno-0-395" name="__codelineno-0-395"></a>
+<a id="__codelineno-0-396" name="__codelineno-0-396"></a><span class="sd">    The `return_splitstate` argument can be used to return the `SplitState` instance for each split. This can be</span>
+<a id="__codelineno-0-397" name="__codelineno-0-397"></a><span class="sd">    useful if a particular logic has to be applied only on specific cases (e.g. if first day of the week, then</span>
+<a id="__codelineno-0-398" name="__codelineno-0-398"></a><span class="sd">    retrain a model).</span>
+<a id="__codelineno-0-399" name="__codelineno-0-399"></a>
+<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">    By returning the split state, the user has the freedom and flexibility to apply any logic.</span>
+<a id="__codelineno-0-401" name="__codelineno-0-401"></a>
+<a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">    Arguments:</span>
+<a id="__codelineno-0-403" name="__codelineno-0-403"></a><span class="sd">        *arrays: The arrays to split. Must have the same length as `time_series`.</span>
+<a id="__codelineno-0-404" name="__codelineno-0-404"></a><span class="sd">        time_series: The time series used to create boolean mask for splits. It is not required to be sorted, but it</span>
+<a id="__codelineno-0-405" name="__codelineno-0-405"></a><span class="sd">            must support:</span>
+<a id="__codelineno-0-406" name="__codelineno-0-406"></a>
+<a id="__codelineno-0-407" name="__codelineno-0-407"></a><span class="sd">            - comparison operators (with other date-like objects).</span>
+<a id="__codelineno-0-408" name="__codelineno-0-408"></a><span class="sd">            - bitwise operators (with other boolean arrays).</span>
+<a id="__codelineno-0-409" name="__codelineno-0-409"></a><span class="sd">            - `.min()` and `.max()` methods.</span>
+<a id="__codelineno-0-410" name="__codelineno-0-410"></a><span class="sd">            - `.shape` attribute.</span>
+<a id="__codelineno-0-411" name="__codelineno-0-411"></a><span class="sd">        start_dt: The start of the time period. If provided, it is used in place of the `time_series.min()`.</span>
+<a id="__codelineno-0-412" name="__codelineno-0-412"></a><span class="sd">        end_dt: The end of the time period. If provided,it is used in place of the `time_series.max()`.</span>
+<a id="__codelineno-0-413" name="__codelineno-0-413"></a><span class="sd">        return_splitstate: Whether to return the `SplitState` instance for each split.</span>
+<a id="__codelineno-0-414" name="__codelineno-0-414"></a>
+<a id="__codelineno-0-415" name="__codelineno-0-415"></a><span class="sd">            - If True, the generator yields tuples of the form `(train_forecast_arrays, split_state)`, where</span>
+<a id="__codelineno-0-416" name="__codelineno-0-416"></a><span class="sd">            `train_forecast_arrays` is a tuple of arrays containing the training and forecast data, and</span>
+<a id="__codelineno-0-417" name="__codelineno-0-417"></a><span class="sd">            `split_state` is a `SplitState` instance representing the current split.</span>
+<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">            - If False, the generator yields tuples of the form `train_forecast_arrays`.</span>
+<a id="__codelineno-0-419" name="__codelineno-0-419"></a>
+<a id="__codelineno-0-420" name="__codelineno-0-420"></a><span class="sd">    Returns:</span>
+<a id="__codelineno-0-421" name="__codelineno-0-421"></a><span class="sd">        A generator of tuples of arrays containing the training and forecast data.</span>
+<a id="__codelineno-0-422" name="__codelineno-0-422"></a><span class="sd">            Each tuple corresponds to a split generated by the `TimeBasedSplit` instance. If `return_splitstate` is</span>
+<a id="__codelineno-0-423" name="__codelineno-0-423"></a><span class="sd">            True, each tuple is of the form `(train_forecast_arrays, split_state)`, othersiwe it is of the form</span>
+<a id="__codelineno-0-424" name="__codelineno-0-424"></a><span class="sd">            `train_forecast_arrays`.</span>
+<a id="__codelineno-0-425" name="__codelineno-0-425"></a>
+<a id="__codelineno-0-426" name="__codelineno-0-426"></a><span class="sd">    Raises:</span>
+<a id="__codelineno-0-427" name="__codelineno-0-427"></a><span class="sd">        ValueError: If no arrays are provided as input.</span>
+<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">        ValueError: If the arrays provided have different lengths.</span>
+<a id="__codelineno-0-429" name="__codelineno-0-429"></a><span class="sd">        ValueError: If the length of the time series does not match the length of the arrays.</span>
+<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-431" name="__codelineno-0-431"></a>    <span class="n">n_arrays</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span>
+<a id="__codelineno-0-432" name="__codelineno-0-432"></a>    <span class="k">if</span> <span class="n">n_arrays</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-433" name="__codelineno-0-433"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;At least one array required as input&quot;</span>
+<a id="__codelineno-0-434" name="__codelineno-0-434"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-435" name="__codelineno-0-435"></a>
+<a id="__codelineno-0-436" name="__codelineno-0-436"></a>    <span class="n">ts_shape</span> <span class="o">=</span> <span class="n">time_series</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-0-437" name="__codelineno-0-437"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-0-438" name="__codelineno-0-438"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Time series must be 1-dimensional. Got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ts_shape</span><span class="p">)</span><span class="si">}</span><span class="s2"> dimensions.&quot;</span>
+<a id="__codelineno-0-439" name="__codelineno-0-439"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-440" name="__codelineno-0-440"></a>
+<a id="__codelineno-0-441" name="__codelineno-0-441"></a>    <span class="n">arrays_</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">nw</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">nw</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+<a id="__codelineno-0-442" name="__codelineno-0-442"></a>        <span class="n">nw</span><span class="o">.</span><span class="n">from_native</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">eager_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_series</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">arrays</span>
+<a id="__codelineno-0-443" name="__codelineno-0-443"></a>    <span class="p">)</span>
+<a id="__codelineno-0-444" name="__codelineno-0-444"></a>    <span class="n">time_series_</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">nw</span><span class="o">.</span><span class="n">Series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="n">nw</span><span class="o">.</span><span class="n">from_native</span><span class="p">(</span><span class="n">time_series</span><span class="p">,</span> <span class="n">series_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-445" name="__codelineno-0-445"></a>
+<a id="__codelineno-0-446" name="__codelineno-0-446"></a>    <span class="n">a0</span> <span class="o">=</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-447" name="__codelineno-0-447"></a>    <span class="n">arr_len</span> <span class="o">=</span> <span class="n">a0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-0-448" name="__codelineno-0-448"></a>
+<a id="__codelineno-0-449" name="__codelineno-0-449"></a>    <span class="k">if</span> <span class="n">n_arrays</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">arr_len</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arrays_</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+<a id="__codelineno-0-450" name="__codelineno-0-450"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;All arrays must have the same length. Got </span><span class="si">{</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">arrays_</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-451" name="__codelineno-0-451"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-452" name="__codelineno-0-452"></a>
+<a id="__codelineno-0-453" name="__codelineno-0-453"></a>    <span class="k">if</span> <span class="n">arr_len</span> <span class="o">!=</span> <span class="n">ts_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<a id="__codelineno-0-454" name="__codelineno-0-454"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Time series and arrays must have the same length. Got </span><span class="si">{</span><span class="n">arr_len</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">ts_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-455" name="__codelineno-0-455"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-456" name="__codelineno-0-456"></a>
+<a id="__codelineno-0-457" name="__codelineno-0-457"></a>    <span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span> <span class="o">=</span> <span class="n">start_dt</span> <span class="ow">or</span> <span class="n">time_series_</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end_dt</span> <span class="ow">or</span> <span class="n">time_series_</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<a id="__codelineno-0-458" name="__codelineno-0-458"></a>
+<a id="__codelineno-0-459" name="__codelineno-0-459"></a>    <span class="k">if</span> <span class="n">time_start</span> <span class="o">&gt;=</span> <span class="n">time_end</span><span class="p">:</span>
+<a id="__codelineno-0-460" name="__codelineno-0-460"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;`time_start` must be before `time_end`.&quot;</span>
+<a id="__codelineno-0-461" name="__codelineno-0-461"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<a id="__codelineno-0-462" name="__codelineno-0-462"></a>
+<a id="__codelineno-0-463" name="__codelineno-0-463"></a>    <span class="n">_index_methods</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">BACKEND_TO_INDEXING_METHOD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)),</span> <span class="n">default_indexing_method</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">arrays_</span><span class="p">)</span>
+<a id="__codelineno-0-464" name="__codelineno-0-464"></a>    <span class="k">for</span> <span class="n">split</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_splits_from_period</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">):</span>
+<a id="__codelineno-0-465" name="__codelineno-0-465"></a>        <span class="n">train_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&gt;=</span> <span class="n">split</span><span class="o">.</span><span class="n">train_start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&lt;</span> <span class="n">split</span><span class="o">.</span><span class="n">train_end</span><span class="p">)</span>
+<a id="__codelineno-0-466" name="__codelineno-0-466"></a>        <span class="n">forecast_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&gt;=</span> <span class="n">split</span><span class="o">.</span><span class="n">forecast_start</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">time_series_</span> <span class="o">&lt;</span> <span class="n">split</span><span class="o">.</span><span class="n">forecast_end</span><span class="p">)</span>
+<a id="__codelineno-0-467" name="__codelineno-0-467"></a>
+<a id="__codelineno-0-468" name="__codelineno-0-468"></a>        <span class="n">train_forecast_arrays</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+<a id="__codelineno-0-469" name="__codelineno-0-469"></a>            <span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span>
+<a id="__codelineno-0-470" name="__codelineno-0-470"></a>                <span class="p">(</span>
+<a id="__codelineno-0-471" name="__codelineno-0-471"></a>                    <span class="n">nw</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">_idx_method</span><span class="p">(</span><span class="n">_arr</span><span class="p">,</span> <span class="n">train_mask</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<a id="__codelineno-0-472" name="__codelineno-0-472"></a>                    <span class="n">nw</span><span class="o">.</span><span class="n">to_native</span><span class="p">(</span><span class="n">_idx_method</span><span class="p">(</span><span class="n">_arr</span><span class="p">,</span> <span class="n">forecast_mask</span><span class="p">),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+<a id="__codelineno-0-473" name="__codelineno-0-473"></a>                <span class="p">)</span>
+<a id="__codelineno-0-474" name="__codelineno-0-474"></a>                <span class="k">for</span> <span class="n">_arr</span><span class="p">,</span> <span class="n">_idx_method</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">arrays_</span><span class="p">,</span> <span class="n">_index_methods</span><span class="p">)</span>
+<a id="__codelineno-0-475" name="__codelineno-0-475"></a>            <span class="p">),</span>
+<a id="__codelineno-0-476" name="__codelineno-0-476"></a>        <span class="p">)</span>
+<a id="__codelineno-0-477" name="__codelineno-0-477"></a>
+<a id="__codelineno-0-478" name="__codelineno-0-478"></a>        <span class="k">if</span> <span class="n">return_splitstate</span><span class="p">:</span>
+<a id="__codelineno-0-479" name="__codelineno-0-479"></a>            <span class="k">yield</span> <span class="n">train_forecast_arrays</span><span class="p">,</span> <span class="n">split</span>
+<a id="__codelineno-0-480" name="__codelineno-0-480"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-481" name="__codelineno-0-481"></a>            <span class="k">yield</span> <span class="n">train_forecast_arrays</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="timebasedcv.core.ExpandingTimeSplit" class="doc doc-heading">
+            <code>ExpandingTimeSplit</code>
+
+
+<a href="#timebasedcv.core.ExpandingTimeSplit" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
+
+
+      <p>Alias for <code>TimeBasedSplit(..., window="expanding")</code>.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>timebasedcv/core.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-484">484</a></span>
+<span class="normal"><a href="#__codelineno-0-485">485</a></span>
+<span class="normal"><a href="#__codelineno-0-486">486</a></span>
+<span class="normal"><a href="#__codelineno-0-487">487</a></span>
+<span class="normal"><a href="#__codelineno-0-488">488</a></span>
+<span class="normal"><a href="#__codelineno-0-489">489</a></span>
+<span class="normal"><a href="#__codelineno-0-490">490</a></span>
+<span class="normal"><a href="#__codelineno-0-491">491</a></span>
+<span class="normal"><a href="#__codelineno-0-492">492</a></span>
+<span class="normal"><a href="#__codelineno-0-493">493</a></span>
+<span class="normal"><a href="#__codelineno-0-494">494</a></span>
+<span class="normal"><a href="#__codelineno-0-495">495</a></span>
+<span class="normal"><a href="#__codelineno-0-496">496</a></span>
+<span class="normal"><a href="#__codelineno-0-497">497</a></span>
+<span class="normal"><a href="#__codelineno-0-498">498</a></span>
+<span class="normal"><a href="#__codelineno-0-499">499</a></span>
+<span class="normal"><a href="#__codelineno-0-500">500</a></span>
+<span class="normal"><a href="#__codelineno-0-501">501</a></span>
+<span class="normal"><a href="#__codelineno-0-502">502</a></span>
+<span class="normal"><a href="#__codelineno-0-503">503</a></span>
+<span class="normal"><a href="#__codelineno-0-504">504</a></span>
+<span class="normal"><a href="#__codelineno-0-505">505</a></span>
+<span class="normal"><a href="#__codelineno-0-506">506</a></span>
+<span class="normal"><a href="#__codelineno-0-507">507</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-484" name="__codelineno-0-484"></a><span class="k">class</span> <span class="nc">ExpandingTimeSplit</span><span class="p">(</span><span class="n">TimeBasedSplit</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-485" name="__codelineno-0-485"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Alias for `TimeBasedSplit(..., window=&quot;expanding&quot;)`.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-486" name="__codelineno-0-486"></a>
+<a id="__codelineno-0-487" name="__codelineno-0-487"></a>    <span class="n">name_</span> <span class="o">=</span> <span class="s2">&quot;ExpandingTimeSplit&quot;</span>
+<a id="__codelineno-0-488" name="__codelineno-0-488"></a>
+<a id="__codelineno-0-489" name="__codelineno-0-489"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># noqa: PLR0913</span>
+<a id="__codelineno-0-490" name="__codelineno-0-490"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-491" name="__codelineno-0-491"></a>        <span class="o">*</span><span class="p">,</span>
+<a id="__codelineno-0-492" name="__codelineno-0-492"></a>        <span class="n">frequency</span><span class="p">:</span> <span class="n">FrequencyUnit</span><span class="p">,</span>
+<a id="__codelineno-0-493" name="__codelineno-0-493"></a>        <span class="n">train_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-494" name="__codelineno-0-494"></a>        <span class="n">forecast_horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-495" name="__codelineno-0-495"></a>        <span class="n">gap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-0-496" name="__codelineno-0-496"></a>        <span class="n">stride</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-497" name="__codelineno-0-497"></a>        <span class="n">mode</span><span class="p">:</span> <span class="n">ModeType</span><span class="p">,</span>
+<a id="__codelineno-0-498" name="__codelineno-0-498"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-499" name="__codelineno-0-499"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<a id="__codelineno-0-500" name="__codelineno-0-500"></a>            <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
+<a id="__codelineno-0-501" name="__codelineno-0-501"></a>            <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+<a id="__codelineno-0-502" name="__codelineno-0-502"></a>            <span class="n">forecast_horizon</span><span class="o">=</span><span class="n">forecast_horizon</span><span class="p">,</span>
+<a id="__codelineno-0-503" name="__codelineno-0-503"></a>            <span class="n">gap</span><span class="o">=</span><span class="n">gap</span><span class="p">,</span>
+<a id="__codelineno-0-504" name="__codelineno-0-504"></a>            <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span>
+<a id="__codelineno-0-505" name="__codelineno-0-505"></a>            <span class="n">window</span><span class="o">=</span><span class="s2">&quot;expanding&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-506" name="__codelineno-0-506"></a>            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<a id="__codelineno-0-507" name="__codelineno-0-507"></a>        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="timebasedcv.core.RollingTimeSplit" class="doc doc-heading">
+            <code>RollingTimeSplit</code>
+
+
+<a href="#timebasedcv.core.RollingTimeSplit" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
+
+
+      <p>Alias for <code>TimeBasedSplit(..., window="rolling")</code>.</p>
+
+              <details class="quote">
+                <summary>Source code in <code>timebasedcv/core.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-510">510</a></span>
+<span class="normal"><a href="#__codelineno-0-511">511</a></span>
+<span class="normal"><a href="#__codelineno-0-512">512</a></span>
+<span class="normal"><a href="#__codelineno-0-513">513</a></span>
+<span class="normal"><a href="#__codelineno-0-514">514</a></span>
+<span class="normal"><a href="#__codelineno-0-515">515</a></span>
+<span class="normal"><a href="#__codelineno-0-516">516</a></span>
+<span class="normal"><a href="#__codelineno-0-517">517</a></span>
+<span class="normal"><a href="#__codelineno-0-518">518</a></span>
+<span class="normal"><a href="#__codelineno-0-519">519</a></span>
+<span class="normal"><a href="#__codelineno-0-520">520</a></span>
+<span class="normal"><a href="#__codelineno-0-521">521</a></span>
+<span class="normal"><a href="#__codelineno-0-522">522</a></span>
+<span class="normal"><a href="#__codelineno-0-523">523</a></span>
+<span class="normal"><a href="#__codelineno-0-524">524</a></span>
+<span class="normal"><a href="#__codelineno-0-525">525</a></span>
+<span class="normal"><a href="#__codelineno-0-526">526</a></span>
+<span class="normal"><a href="#__codelineno-0-527">527</a></span>
+<span class="normal"><a href="#__codelineno-0-528">528</a></span>
+<span class="normal"><a href="#__codelineno-0-529">529</a></span>
+<span class="normal"><a href="#__codelineno-0-530">530</a></span>
+<span class="normal"><a href="#__codelineno-0-531">531</a></span>
+<span class="normal"><a href="#__codelineno-0-532">532</a></span>
+<span class="normal"><a href="#__codelineno-0-533">533</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-510" name="__codelineno-0-510"></a><span class="k">class</span> <span class="nc">RollingTimeSplit</span><span class="p">(</span><span class="n">TimeBasedSplit</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<a id="__codelineno-0-511" name="__codelineno-0-511"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Alias for `TimeBasedSplit(..., window=&quot;rolling&quot;)`.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-512" name="__codelineno-0-512"></a>
+<a id="__codelineno-0-513" name="__codelineno-0-513"></a>    <span class="n">name_</span> <span class="o">=</span> <span class="s2">&quot;RollingTimeSplit&quot;</span>
+<a id="__codelineno-0-514" name="__codelineno-0-514"></a>
+<a id="__codelineno-0-515" name="__codelineno-0-515"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># noqa: PLR0913</span>
+<a id="__codelineno-0-516" name="__codelineno-0-516"></a>        <span class="bp">self</span><span class="p">:</span> <span class="n">Self</span><span class="p">,</span>
+<a id="__codelineno-0-517" name="__codelineno-0-517"></a>        <span class="o">*</span><span class="p">,</span>
+<a id="__codelineno-0-518" name="__codelineno-0-518"></a>        <span class="n">frequency</span><span class="p">:</span> <span class="n">FrequencyUnit</span><span class="p">,</span>
+<a id="__codelineno-0-519" name="__codelineno-0-519"></a>        <span class="n">train_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-520" name="__codelineno-0-520"></a>        <span class="n">forecast_horizon</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<a id="__codelineno-0-521" name="__codelineno-0-521"></a>        <span class="n">gap</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-0-522" name="__codelineno-0-522"></a>        <span class="n">stride</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-0-523" name="__codelineno-0-523"></a>        <span class="n">mode</span><span class="p">:</span> <span class="n">ModeType</span><span class="p">,</span>
+<a id="__codelineno-0-524" name="__codelineno-0-524"></a>    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-525" name="__codelineno-0-525"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<a id="__codelineno-0-526" name="__codelineno-0-526"></a>            <span class="n">frequency</span><span class="o">=</span><span class="n">frequency</span><span class="p">,</span>
+<a id="__codelineno-0-527" name="__codelineno-0-527"></a>            <span class="n">train_size</span><span class="o">=</span><span class="n">train_size</span><span class="p">,</span>
+<a id="__codelineno-0-528" name="__codelineno-0-528"></a>            <span class="n">forecast_horizon</span><span class="o">=</span><span class="n">forecast_horizon</span><span class="p">,</span>
+<a id="__codelineno-0-529" name="__codelineno-0-529"></a>            <span class="n">gap</span><span class="o">=</span><span class="n">gap</span><span class="p">,</span>
+<a id="__codelineno-0-530" name="__codelineno-0-530"></a>            <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span>
+<a id="__codelineno-0-531" name="__codelineno-0-531"></a>            <span class="n">window</span><span class="o">=</span><span class="s2">&quot;rolling&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-532" name="__codelineno-0-532"></a>            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<a id="__codelineno-0-533" name="__codelineno-0-533"></a>        <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: API Reference">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                API Reference
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../core/" class="md-footer__link md-footer__link--next" aria-label="Next: timebasedcv.core">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                timebasedcv.core
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fbruzzesi" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/francesco-bruzzesi/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/timebasedcv/" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "content.tabs.link", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      
+    
+  </body>
+</html>
