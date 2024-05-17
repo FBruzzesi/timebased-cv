@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../img/timebasedcv-logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -982,9 +982,9 @@
 
 
 <h2 id="timebasedcv.splitstate.SplitState" class="doc doc-heading">
-            <code>SplitState</code>
+          <code>SplitState</code>
 
-
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
   </span>
@@ -992,11 +992,11 @@
 <a href="#timebasedcv.splitstate.SplitState" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-    <div class="doc doc-contents first">
-            <p class="doc doc-class-bases">
-              Bases: <code><span title="typing.Generic">Generic</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code></p>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><span title="typing.Generic">Generic</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code></p>
 
-
+  
       <p>The <code>SplitState</code> class represents the state of a split.</p>
 <p>This is a set of split points where to partition a time series into training set and forecast set.</p>
 <p>The class ensures that the split is valid by checking that the attributes are of the correct type and are ordered
@@ -1005,112 +1005,114 @@ chronologically.</p>
 total length of the split.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
+
+  <p><span class="doc-section-title">Parameters:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td><code>train_start</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The start of the training set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>train_start</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The start of the training set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>train_end</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The end of the training set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>forecast_start</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The start of the forecast set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>forecast_end</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The end of the forecast set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+        <tr class="doc-section-item">
+          <td><code>train_end</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The end of the training set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>TypeError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If any of the attributes is not of type <code>datetime</code>, <code>date</code> or <code>pd.Timestamp</code>.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the attributes are not ordered chronologically.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <tr class="doc-section-item">
+          <td><code>forecast_start</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The start of the forecast set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>forecast_end</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The end of the forecast set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
 
-              <details class="quote">
-                <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
+
+
+  <p><span class="doc-section-title">Raises:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code>TypeError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If any of the attributes is not of type <code>datetime</code>, <code>date</code> or <code>pd.Timestamp</code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If the attributes are not ordered chronologically.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-23"> 23</a></span>
 <span class="normal"><a href="#__codelineno-0-24"> 24</a></span>
 <span class="normal"><a href="#__codelineno-0-25"> 25</a></span>
 <span class="normal"><a href="#__codelineno-0-26"> 26</a></span>
@@ -1346,9 +1348,9 @@ total length of the split.</p>
 <a id="__codelineno-0-139" name="__codelineno-0-139"></a>            <span class="n">forecast_end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forecast_end</span> <span class="o">-</span> <span class="n">other</span><span class="p">,</span>
 <a id="__codelineno-0-140" name="__codelineno-0-140"></a>        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-              </details>
+            </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -1363,8 +1365,8 @@ total length of the split.</p>
 
 
 <h3 id="timebasedcv.splitstate.SplitState.forecast_length" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">forecast_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">forecast_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1372,33 +1374,34 @@ total length of the split.</p>
 <a href="#timebasedcv.splitstate.SplitState.forecast_length" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the time between <code>forecast_start</code> and <code>forecast_end</code>.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+
+  <p><span class="doc-section-title">Returns:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code><span title="datetime.timedelta">timedelta</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A <code>timedelta</code> object representing the time between <code>forecast_start</code> and <code>forecast_end</code>.</p>
+            </div>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="datetime.timedelta">timedelta</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A <code>timedelta</code> object representing the time between <code>forecast_start</code> and <code>forecast_end</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-    </div>
+    </tbody>
+  </table>
+  </div>
 
 </div>
 
@@ -1407,8 +1410,8 @@ total length of the split.</p>
 
 
 <h3 id="timebasedcv.splitstate.SplitState.gap_length" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">gap_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">gap_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1416,33 +1419,34 @@ total length of the split.</p>
 <a href="#timebasedcv.splitstate.SplitState.gap_length" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the time between <code>train_end</code> and <code>forecast_start</code>.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+
+  <p><span class="doc-section-title">Returns:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code><span title="datetime.timedelta">timedelta</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A <code>timedelta</code> object representing the time between <code>train_end</code> and <code>forecast_start</code>.</p>
+            </div>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="datetime.timedelta">timedelta</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A <code>timedelta</code> object representing the time between <code>train_end</code> and <code>forecast_start</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-    </div>
+    </tbody>
+  </table>
+  </div>
 
 </div>
 
@@ -1451,8 +1455,8 @@ total length of the split.</p>
 
 
 <h3 id="timebasedcv.splitstate.SplitState.total_length" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">total_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">total_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1460,33 +1464,34 @@ total length of the split.</p>
 <a href="#timebasedcv.splitstate.SplitState.total_length" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the time between <code>train_start</code> and <code>forecast_end</code>.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+
+  <p><span class="doc-section-title">Returns:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code><span title="datetime.timedelta">timedelta</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A <code>timedelta</code> object representing the time between <code>train_start</code> and <code>forecast_end</code>.</p>
+            </div>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="datetime.timedelta">timedelta</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A <code>timedelta</code> object representing the time between <code>train_start</code> and <code>forecast_end</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-    </div>
+    </tbody>
+  </table>
+  </div>
 
 </div>
 
@@ -1495,8 +1500,8 @@ total length of the split.</p>
 
 
 <h3 id="timebasedcv.splitstate.SplitState.train_length" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">train_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">train_length</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1504,54 +1509,57 @@ total length of the split.</p>
 <a href="#timebasedcv.splitstate.SplitState.train_length" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the time between <code>train_start</code> and <code>train_end</code>.</p>
 
 
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+
+  <p><span class="doc-section-title">Returns:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code><span title="datetime.timedelta">timedelta</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A <code>timedelta</code> object representing the time between <code>train_start</code> and <code>train_end</code>.</p>
+            </div>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="datetime.timedelta">timedelta</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A <code>timedelta</code> object representing the time between <code>train_start</code> and <code>train_end</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-    </div>
+    </tbody>
+  </table>
+  </div>
 
 </div>
+
 
 
 
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.splitstate.SplitState.__add__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></code>
 
 <a href="#timebasedcv.splitstate.SplitState.__add__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Adds <code>other</code> to each value of the state.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-124">124</a></span>
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-124">124</a></span>
 <span class="normal"><a href="#__codelineno-0-125">125</a></span>
 <span class="normal"><a href="#__codelineno-0-126">126</a></span>
 <span class="normal"><a href="#__codelineno-0-127">127</a></span>
@@ -1567,27 +1575,29 @@ total length of the split.</p>
 <a id="__codelineno-0-130" name="__codelineno-0-130"></a>        <span class="n">forecast_end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forecast_end</span> <span class="o">+</span> <span class="n">other</span><span class="p">,</span>
 <a id="__codelineno-0-131" name="__codelineno-0-131"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.splitstate.SplitState.__post_init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">__post_init__</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="n">__post_init__</span><span class="p">()</span></code>
 
 <a href="#timebasedcv.splitstate.SplitState.__post_init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Post init used to validate the <code>SplitState</code> instance attributes.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-58">58</a></span>
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-58">58</a></span>
 <span class="normal"><a href="#__codelineno-0-59">59</a></span>
 <span class="normal"><a href="#__codelineno-0-60">60</a></span>
 <span class="normal"><a href="#__codelineno-0-61">61</a></span>
@@ -1645,27 +1655,29 @@ total length of the split.</p>
 <a id="__codelineno-0-85" name="__codelineno-0-85"></a>        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;`</span><span class="si">{</span><span class="s1">&#39;`, `&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_slots</span><span class="p">)</span><span class="si">}</span><span class="s2">` must be ordered. Found:</span><span class="se">\n</span><span class="si">{</span><span class="n">_error_msg</span><span class="si">}</span><span class="s2">&quot;</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.splitstate.SplitState.__sub__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__sub__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="fm">__sub__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></code>
 
 <a href="#timebasedcv.splitstate.SplitState.__sub__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Subtracts other to each value of the state.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-133">133</a></span>
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/splitstate.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-133">133</a></span>
 <span class="normal"><a href="#__codelineno-0-134">134</a></span>
 <span class="normal"><a href="#__codelineno-0-135">135</a></span>
 <span class="normal"><a href="#__codelineno-0-136">136</a></span>
@@ -1681,8 +1693,8 @@ total length of the split.</p>
 <a id="__codelineno-0-139" name="__codelineno-0-139"></a>        <span class="n">forecast_end</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forecast_end</span> <span class="o">-</span> <span class="n">other</span><span class="p">,</span>
 <a id="__codelineno-0-140" name="__codelineno-0-140"></a>    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
 
@@ -1690,7 +1702,8 @@ total length of the split.</p>
 
   </div>
 
-    </div>
+  </div>
+
 
 </div>
 
@@ -1811,7 +1824,7 @@ total length of the split.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "content.tabs.link", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
   </body>

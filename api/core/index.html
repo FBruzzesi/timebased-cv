@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../img/timebasedcv-logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -966,15 +966,15 @@
 
 
 <h2 id="timebasedcv.core._CoreTimeBasedSplit" class="doc doc-heading">
-            <code>_CoreTimeBasedSplit</code>
+          <code>_CoreTimeBasedSplit</code>
 
 
 <a href="#timebasedcv.core._CoreTimeBasedSplit" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
 
-
+  
       <p>Base class for time based splits. This class is not meant to be used directly.</p>
 <p><code>_CoreTimeBasedSplit</code> implements all the logics to set up a time based splits class.</p>
 <p>In particular it implements <code>_splits_from_period</code> which is used to generate splits from a given time period (from
@@ -982,174 +982,176 @@ start to end dates) from the given arguments of the class (frequency, train_size
 window type).</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>frequency</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.FrequencyUnit">FrequencyUnit</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The frequency of the time series. Must be one of "days", "seconds", "microseconds", "milliseconds",
+
+  <p><span class="doc-section-title">Parameters:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td><code>frequency</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.FrequencyUnit">FrequencyUnit</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The frequency of the time series. Must be one of "days", "seconds", "microseconds", "milliseconds",
 "minutes", "hours", "weeks". These are the only valid values for the <code>unit</code> argument of <code>timedelta</code> from
 python <code>datetime</code> standard library.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>train_size</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the training set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>forecast_horizon</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the forecast horizon, i.e. the size of the test set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>gap</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the gap between the training set and the forecast horizon.</p>
-              </div>
-            </td>
-            <td>
-                  <code>0</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>stride</code></td>
-            <td>
-                  <code><span title="typing.Union">Union</span>[int, None]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),
-it fallbacks to the <code>forecast_horizon</code> quantity.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>window</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.WindowType">WindowType</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The type of window to use, either "rolling" or "expanding".</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;rolling&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>mode</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.ModeType">ModeType</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Determines in which orders the splits are generated, either "forward" or "backward".</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;forward&#39;</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>frequency</code> is not one of "days", "seconds", "microseconds", "milliseconds", "minutes", "hours",
+        <tr class="doc-section-item">
+          <td><code>train_size</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the training set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>forecast_horizon</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the forecast horizon, i.e. the size of the test set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>gap</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the gap between the training set and the forecast horizon.</p>
+            </div>
+          </td>
+          <td>
+                <code>0</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>stride</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, None]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),
+it fallbacks to the <code>forecast_horizon</code> quantity.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>window</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.WindowType">WindowType</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The type of window to use, either "rolling" or "expanding".</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;rolling&#39;</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>mode</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.ModeType">ModeType</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Determines in which orders the splits are generated, either "forward" or "backward".</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;forward&#39;</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><span class="doc-section-title">Raises:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>frequency</code> is not one of "days", "seconds", "microseconds", "milliseconds", "minutes", "hours",
 "weeks".</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>window</code> is not one of "rolling" or "expanding".</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>TypeError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not of type <code>int</code>.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not strictly positive.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>window</code> is not one of "rolling" or "expanding".</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>TypeError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not of type <code>int</code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not strictly positive.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
       <p>Although <code>_CoreTimeBasedSplit</code> is not meant to be used directly, it can be used as a template to create new time
 based splits classes.</p>
 <p>Usage:
@@ -1166,9 +1168,9 @@ based splits classes.</p>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="k">yield</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_test</span>
 </code></pre></div></p>
 
-              <details class="quote">
-                <summary>Source code in <code>timebasedcv/core.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-40"> 40</a></span>
 <span class="normal"><a href="#__codelineno-0-41"> 41</a></span>
 <span class="normal"><a href="#__codelineno-0-42"> 42</a></span>
 <span class="normal"><a href="#__codelineno-0-43"> 43</a></span>
@@ -1602,9 +1604,9 @@ based splits classes.</p>
 <a id="__codelineno-0-255" name="__codelineno-0-255"></a>
 <a id="__codelineno-0-256" name="__codelineno-0-256"></a>        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_splits_from_period</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
-              </details>
+            </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -1619,8 +1621,8 @@ based splits classes.</p>
 
 
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.forecast_delta" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">forecast_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">forecast_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1628,10 +1630,10 @@ based splits classes.</p>
 <a href="#timebasedcv.core._CoreTimeBasedSplit.forecast_delta" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the <code>timedelta</code> object corresponding to the <code>forecast_horizon</code>.</p>
-    </div>
+  </div>
 
 </div>
 
@@ -1640,8 +1642,8 @@ based splits classes.</p>
 
 
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.gap_delta" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">gap_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">gap_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1649,10 +1651,10 @@ based splits classes.</p>
 <a href="#timebasedcv.core._CoreTimeBasedSplit.gap_delta" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the <code>timedelta</code> object corresponding to the <code>gap</code> and <code>frequency</code>.</p>
-    </div>
+  </div>
 
 </div>
 
@@ -1661,8 +1663,8 @@ based splits classes.</p>
 
 
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.stride_delta" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">stride_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">stride_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1670,10 +1672,10 @@ based splits classes.</p>
 <a href="#timebasedcv.core._CoreTimeBasedSplit.stride_delta" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the <code>timedelta</code> object corresponding to <code>stride</code>.</p>
-    </div>
+  </div>
 
 </div>
 
@@ -1682,8 +1684,8 @@ based splits classes.</p>
 
 
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.train_delta" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">train_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
-
+          <code class="highlight language-python"><span class="n">train_delta</span><span class="p">:</span> <span class="n">timedelta</span></code>
+  
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
@@ -1691,31 +1693,33 @@ based splits classes.</p>
 <a href="#timebasedcv.core._CoreTimeBasedSplit.train_delta" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the <code>timedelta</code> object corresponding to the <code>train_size</code>.</p>
-    </div>
+  </div>
 
 </div>
+
 
 
 
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.__repr__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__repr__</span><span class="p">()</span></code>
+          <code class="highlight language-python"><span class="fm">__repr__</span><span class="p">()</span></code>
 
 <a href="#timebasedcv.core._CoreTimeBasedSplit.__repr__" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Custom repr method.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-149">149</a></span>
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/core.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-149">149</a></span>
 <span class="normal"><a href="#__codelineno-0-150">150</a></span>
 <span class="normal"><a href="#__codelineno-0-151">151</a></span>
 <span class="normal"><a href="#__codelineno-0-152">152</a></span>
@@ -1743,27 +1747,29 @@ based splits classes.</p>
 <a id="__codelineno-0-161" name="__codelineno-0-161"></a>
 <a id="__codelineno-0-162" name="__codelineno-0-162"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;(</span><span class="se">\n</span><span class="s2">    &quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_new_line_tab</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&#39;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">zip</span><span class="p">(</span><span class="n">_attrs</span><span class="p">,</span><span class="w"> </span><span class="n">_values</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">)&quot;</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
+
 
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.core._CoreTimeBasedSplit.n_splits_of" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">n_splits_of</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">n_splits_of</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">start_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#timebasedcv.core._CoreTimeBasedSplit.n_splits_of" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns the number of splits that can be generated from <code>time_series</code>.</p>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-236">236</a></span>
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/core.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-236">236</a></span>
 <span class="normal"><a href="#__codelineno-0-237">237</a></span>
 <span class="normal"><a href="#__codelineno-0-238">238</a></span>
 <span class="normal"><a href="#__codelineno-0-239">239</a></span>
@@ -1805,8 +1811,8 @@ based splits classes.</p>
 <a id="__codelineno-0-255" name="__codelineno-0-255"></a>
 <a id="__codelineno-0-256" name="__codelineno-0-256"></a>    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_splits_from_period</span><span class="p">(</span><span class="n">time_start</span><span class="p">,</span> <span class="n">time_end</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
 
@@ -1814,7 +1820,8 @@ based splits classes.</p>
 
   </div>
 
-    </div>
+  </div>
+
 
 </div>
 
@@ -1951,7 +1958,7 @@ based splits classes.</p>
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "content.tabs.link", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
   </body>

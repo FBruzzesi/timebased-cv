@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../img/timebasedcv-logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -913,188 +913,190 @@
 
 
 <h2 id="timebasedcv.core.TimeBasedSplit" class="doc doc-heading">
-            <code>TimeBasedSplit</code>
+          <code>TimeBasedSplit</code>
 
 
 <a href="#timebasedcv.core.TimeBasedSplit" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-    <div class="doc doc-contents first">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core._CoreTimeBasedSplit" href="../core/#timebasedcv.core._CoreTimeBasedSplit">_CoreTimeBasedSplit</a></code></p>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core._CoreTimeBasedSplit" href="../core/#timebasedcv.core._CoreTimeBasedSplit">_CoreTimeBasedSplit</a></code></p>
 
-
+  
       <p>Class that generates splits based on time values, independently from the number of samples in each split.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>frequency</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.FrequencyUnit">FrequencyUnit</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The frequency of the time series. Must be one of "days", "seconds", "microseconds", "milliseconds",
+
+  <p><span class="doc-section-title">Parameters:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td><code>frequency</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.FrequencyUnit">FrequencyUnit</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The frequency of the time series. Must be one of "days", "seconds", "microseconds", "milliseconds",
 "minutes", "hours", "weeks". These are the only valid values for the <code>unit</code> argument of <code>timedelta</code> from
 python <code>datetime</code> standard library.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>train_size</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the training set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>forecast_horizon</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the forecast horizon, i.e. the size of the test set.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>gap</code></td>
-            <td>
-                  <code>int</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the gap between the training set and the forecast horizon.</p>
-              </div>
-            </td>
-            <td>
-                  <code>0</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>stride</code></td>
-            <td>
-                  <code><span title="typing.Union">Union</span>[int, None]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),
-it fallbacks to the <code>forecast_horizon</code> quantity.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>window</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.WindowType">WindowType</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The type of window to use, either "rolling" or "expanding".</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;rolling&#39;</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>mode</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.ModeType">ModeType</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Determines in which orders the splits are generated, either "forward" or "backward".</p>
-              </div>
-            </td>
-            <td>
-                  <code>&#39;forward&#39;</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>frequency</code> is not one of "days", "seconds", "microseconds", "milliseconds", "minutes", "hours",
+        <tr class="doc-section-item">
+          <td><code>train_size</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the training set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>forecast_horizon</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the forecast horizon, i.e. the size of the test set.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>gap</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the gap between the training set and the forecast horizon.</p>
+            </div>
+          </td>
+          <td>
+                <code>0</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>stride</code></td>
+          <td>
+                <code><span title="typing.Union">Union</span>[int, None]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The size of the stride between consecutive splits. Notice that if stride is not provided (or set to 0),
+it fallbacks to the <code>forecast_horizon</code> quantity.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>window</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.WindowType">WindowType</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The type of window to use, either "rolling" or "expanding".</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;rolling&#39;</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>mode</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.ModeType">ModeType</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Determines in which orders the splits are generated, either "forward" or "backward".</p>
+            </div>
+          </td>
+          <td>
+                <code>&#39;forward&#39;</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+  <p><span class="doc-section-title">Raises:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>frequency</code> is not one of "days", "seconds", "microseconds", "milliseconds", "minutes", "hours",
 "weeks".</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>window</code> is not one of "rolling" or "expanding".</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>TypeError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not of type <code>int</code>.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not strictly positive.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>window</code> is not one of "rolling" or "expanding".</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>TypeError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not of type <code>int</code>.</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If <code>train_size</code>, <code>forecast_horizon</code>, <code>gap</code> or <code>stride</code> are not strictly positive.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
       <p>Usage:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1150,9 +1152,9 @@ it fallbacks to the <code>forecast_horizon</code> quantity.</p>
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>| =================== /// *** |
 </code></pre></div></p>
 
-              <details class="quote">
-                <summary>Source code in <code>timebasedcv/core.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-259">259</a></span>
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-259">259</a></span>
 <span class="normal"><a href="#__codelineno-0-260">260</a></span>
 <span class="normal"><a href="#__codelineno-0-261">261</a></span>
 <span class="normal"><a href="#__codelineno-0-262">262</a></span>
@@ -1598,11 +1600,12 @@ it fallbacks to the <code>forecast_horizon</code> quantity.</p>
 <a id="__codelineno-0-480" name="__codelineno-0-480"></a>            <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-0-481" name="__codelineno-0-481"></a>                <span class="k">yield</span> <span class="n">train_forecast_arrays</span>
 </code></pre></div></td></tr></table></div>
-              </details>
+            </details>
 
-
+  
 
   <div class="doc doc-children">
+
 
 
 
@@ -1615,14 +1618,15 @@ it fallbacks to the <code>forecast_horizon</code> quantity.</p>
 <div class="doc doc-object doc-function">
 
 
+
 <h3 id="timebasedcv.core.TimeBasedSplit.split" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">split</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">,</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">start_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_splitstate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+          <code class="highlight language-python"><span class="n">split</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">,</span> <span class="n">time_series</span><span class="p">,</span> <span class="n">start_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end_dt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_splitstate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#timebasedcv.core.TimeBasedSplit.split" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
-    <div class="doc doc-contents ">
-
+  <div class="doc doc-contents ">
+  
       <p>Returns a generator of split arrays based on the <code>time_series</code>.</p>
 <p>The <code>time_series</code> argument is split on split state values to create boolean masks for training - from train_
 start (included) to train_end (excluded) - and forecast - from forecast_start (included) to forecast_end
@@ -1637,39 +1641,40 @@ retrain a model).</p>
 <p>By returning the split state, the user has the freedom and flexibility to apply any logic.</p>
 
 
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
+
+  <p><span class="doc-section-title">Parameters:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td><code>*arrays</code></td>
+          <td>
+                <code><span title="timebasedcv.core.TL">TL</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The arrays to split. Must have the same length as <code>time_series</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>()</code>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td><code>*arrays</code></td>
-            <td>
-                  <code><span title="timebasedcv.core.TL">TL</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The arrays to split. Must have the same length as <code>time_series</code>.</p>
-              </div>
-            </td>
-            <td>
-                  <code>()</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>time_series</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.SeriesLike">SeriesLike</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The time series used to create boolean mask for splits. It is not required to be sorted, but it
+        <tr class="doc-section-item">
+          <td><code>time_series</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.SeriesLike">SeriesLike</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The time series used to create boolean mask for splits. It is not required to be sorted, but it
 must support:</p>
 <ul>
 <li>comparison operators (with other date-like objects).</li>
@@ -1677,135 +1682,137 @@ must support:</p>
 <li><code>.min()</code> and <code>.max()</code> methods.</li>
 <li><code>.shape</code> attribute.</li>
 </ul>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>start_dt</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The start of the time period. If provided, it is used in place of the <code>time_series.min()</code>.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>end_dt</code></td>
-            <td>
-                  <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The end of the time period. If provided,it is used in place of the <code>time_series.max()</code>.</p>
-              </div>
-            </td>
-            <td>
-                  <code>None</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code>return_splitstate</code></td>
-            <td>
-                  <code>bool</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Whether to return the <code>SplitState</code> instance for each split.</p>
+            </div>
+          </td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>start_dt</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The start of the time period. If provided, it is used in place of the <code>time_series.min()</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>end_dt</code></td>
+          <td>
+                <code><span title="timebasedcv.utils._types.NullableDatetime">NullableDatetime</span></code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>The end of the time period. If provided,it is used in place of the <code>time_series.max()</code>.</p>
+            </div>
+          </td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td><code>return_splitstate</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>Whether to return the <code>SplitState</code> instance for each split.</p>
 <ul>
 <li>If True, the generator yields tuples of the form <code>(train_forecast_arrays, split_state)</code>, where
 <code>train_forecast_arrays</code> is a tuple of arrays containing the training and forecast data, and
 <code>split_state</code> is a <code>SplitState</code> instance representing the current split.</li>
 <li>If False, the generator yields tuples of the form <code>train_forecast_arrays</code>.</li>
 </ul>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+            </div>
+          </td>
+          <td>
+                <code>False</code>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><span title="typing.Generator">Generator</span>[<span title="typing.Union">Union</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <span title="typing.Tuple">Tuple</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <a class="autorefs autorefs-internal" title="timebasedcv.splitstate.SplitState" href="../splitstate/#timebasedcv.splitstate.SplitState">SplitState</a>]], None, None]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>A generator of tuples of arrays containing the training and forecast data.
+    </tbody>
+  </table>
+
+
+
+  <p><span class="doc-section-title">Returns:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code><span title="typing.Generator">Generator</span>[<span title="typing.Union">Union</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <span title="typing.Tuple">Tuple</span>[<span title="typing.Tuple">Tuple</span>[<span title="timebasedcv.core.TL">TL</span>, ...], <a class="autorefs autorefs-internal" title="timebasedcv.splitstate.SplitState" href="../splitstate/#timebasedcv.splitstate.SplitState">SplitState</a>]], None, None]</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>A generator of tuples of arrays containing the training and forecast data.
 Each tuple corresponds to a split generated by the <code>TimeBasedSplit</code> instance. If <code>return_splitstate</code> is
 True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code>, othersiwe it is of the form
 <code>train_forecast_arrays</code>.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
+            </div>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If no arrays are provided as input.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the arrays provided have different lengths.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                  <code>ValueError</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the length of the time series does not match the length of the arrays.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+    </tbody>
+  </table>
 
-            <details class="quote">
-              <summary>Source code in <code>timebasedcv/core.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-376">376</a></span>
+
+
+  <p><span class="doc-section-title">Raises:</span></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If no arrays are provided as input.</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If the arrays provided have different lengths.</p>
+            </div>
+          </td>
+        </tr>
+        <tr class="doc-section-item">
+          <td>
+                <code>ValueError</code>
+          </td>
+          <td>
+            <div class="doc-md-description">
+              <p>If the length of the time series does not match the length of the arrays.</p>
+            </div>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+          <details class="quote">
+            <summary>Source code in <code>timebasedcv/core.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-376">376</a></span>
 <span class="normal"><a href="#__codelineno-0-377">377</a></span>
 <span class="normal"><a href="#__codelineno-0-378">378</a></span>
 <span class="normal"><a href="#__codelineno-0-379">379</a></span>
@@ -2017,8 +2024,8 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 <a id="__codelineno-0-480" name="__codelineno-0-480"></a>        <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-0-481" name="__codelineno-0-481"></a>            <span class="k">yield</span> <span class="n">train_forecast_arrays</span>
 </code></pre></div></td></tr></table></div>
-            </details>
-    </div>
+          </details>
+  </div>
 
 </div>
 
@@ -2026,7 +2033,8 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 
   </div>
 
-    </div>
+  </div>
+
 
 </div>
 
@@ -2035,22 +2043,22 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 
 
 <h2 id="timebasedcv.core.ExpandingTimeSplit" class="doc doc-heading">
-            <code>ExpandingTimeSplit</code>
+          <code>ExpandingTimeSplit</code>
 
 
 <a href="#timebasedcv.core.ExpandingTimeSplit" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-    <div class="doc doc-contents first">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
 
-
+  
       <p>Alias for <code>TimeBasedSplit(..., window="expanding")</code>.</p>
 
-              <details class="quote">
-                <summary>Source code in <code>timebasedcv/core.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-484">484</a></span>
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-484">484</a></span>
 <span class="normal"><a href="#__codelineno-0-485">485</a></span>
 <span class="normal"><a href="#__codelineno-0-486">486</a></span>
 <span class="normal"><a href="#__codelineno-0-487">487</a></span>
@@ -2098,9 +2106,9 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 <a id="__codelineno-0-506" name="__codelineno-0-506"></a>            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
 <a id="__codelineno-0-507" name="__codelineno-0-507"></a>        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-              </details>
+            </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -2116,7 +2124,8 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 
   </div>
 
-    </div>
+  </div>
+
 
 </div>
 
@@ -2125,22 +2134,22 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 
 
 <h2 id="timebasedcv.core.RollingTimeSplit" class="doc doc-heading">
-            <code>RollingTimeSplit</code>
+          <code>RollingTimeSplit</code>
 
 
 <a href="#timebasedcv.core.RollingTimeSplit" class="headerlink" title="Permanent link">&para;</a></h2>
 
 
-    <div class="doc doc-contents first">
-            <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
+  <div class="doc doc-contents first">
+          <p class="doc doc-class-bases">
+            Bases: <code><a class="autorefs autorefs-internal" title="timebasedcv.core.TimeBasedSplit" href="#timebasedcv.core.TimeBasedSplit">TimeBasedSplit</a></code></p>
 
-
+  
       <p>Alias for <code>TimeBasedSplit(..., window="rolling")</code>.</p>
 
-              <details class="quote">
-                <summary>Source code in <code>timebasedcv/core.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-510">510</a></span>
+            <details class="quote">
+              <summary>Source code in <code>timebasedcv/core.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-510">510</a></span>
 <span class="normal"><a href="#__codelineno-0-511">511</a></span>
 <span class="normal"><a href="#__codelineno-0-512">512</a></span>
 <span class="normal"><a href="#__codelineno-0-513">513</a></span>
@@ -2188,9 +2197,9 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 <a id="__codelineno-0-532" name="__codelineno-0-532"></a>            <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
 <a id="__codelineno-0-533" name="__codelineno-0-533"></a>        <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-              </details>
+            </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -2206,7 +2215,8 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
 
   </div>
 
-    </div>
+  </div>
+
 
 </div>
 
@@ -2343,7 +2353,7 @@ True, each tuple is of the form <code>(train_forecast_arrays, split_state)</code
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.footer", "navigation.top", "navigation.tracking", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tooltips", "content.tabs.link", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
   </body>
