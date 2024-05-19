@@ -868,7 +868,7 @@
   
 
 
-<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<h1 id="getting-started">Getting started 🐍<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
 <p>The following sections will guide you through the basic usage of the library.</p>
 <h2 id="timebasedsplit"><code>TimeBasedSplit</code><a class="headerlink" href="#timebasedsplit" title="Permanent link">&para;</a></h2>
 <p>The <a href="../../api/timebasedcv/#timebasedcv.core.TimeBasedSplit"><code>TimeBasedSplit</code></a> class allows to define a way to split your data based on time. There is a (long) list of parameters that can be set to define how to generate the splits. These allow for a lot of flexibility in how the data is split. Here is an overview of them:</p>
@@ -1106,7 +1106,15 @@
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">for</span> <span class="n">a_train</span><span class="p">,</span> <span class="n">a_test</span><span class="p">,</span> <span class="n">b_train</span><span class="p">,</span> <span class="n">b_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="ow">in</span> <span class="n">tbs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">time_series</span><span class="o">=</span><span class="n">time_series</span><span class="p">):</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="c1"># Do some magic!</span>
 </code></pre></div>
-<p>For now the requirement is still that they all have the same length, but we are working on relaxing this constraint.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The only requirement is that the all the arrays must have the same length, as we use the mask on the <code>time_series</code> to slice each one of them.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ideally each array can be a different type (numpy, pandas, polars, and so on...), in practice there are a few limitations that might arise from the different types, so please be aware of that.</p>
+<p>We are working to make the library more flexible and to support more types of arrays and more interactions between them.</p>
+</div>
 
 
 

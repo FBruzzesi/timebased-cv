@@ -982,7 +982,7 @@
 
 
 <h2 id="timebasedcv.splitstate.SplitState" class="doc doc-heading">
-          <code>SplitState</code>
+          <code>timebasedcv.splitstate.SplitState</code>
 
   
   <span class="doc doc-labels">
@@ -997,8 +997,8 @@
             Bases: <code><span title="typing.Generic">Generic</span>[<span title="timebasedcv.utils._types.DateTimeLike">DateTimeLike</span>]</code></p>
 
   
-      <p>The <code>SplitState</code> class represents the state of a split.</p>
-<p>This is a set of split points where to partition a time series into training set and forecast set.</p>
+      <p>A <code>SplitState</code> represents the state of a split in terms of its 4 cut/split points.</p>
+<p>Namely these are start and end of training set, start and end of forecasting/test set.</p>
 <p>The class ensures that the split is valid by checking that the attributes are of the correct type and are ordered
 chronologically.</p>
 <p>The class provides properties to calculate the length of the training set, forecast set, gap between them, and the
@@ -1231,9 +1231,9 @@ total length of the split.</p>
 <span class="normal"><a href="#__codelineno-0-139">139</a></span>
 <span class="normal"><a href="#__codelineno-0-140">140</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="k">class</span> <span class="nc">SplitState</span><span class="p">(</span><span class="n">Generic</span><span class="p">[</span><span class="n">DateTimeLike</span><span class="p">]):</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;The `SplitState` class represents the state of a split.</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A `SplitState` represents the state of a split in terms of its 4 cut/split points.</span>
 <a id="__codelineno-0-26" name="__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">    This is a set of split points where to partition a time series into training set and forecast set.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="sd">    Namely these are start and end of training set, start and end of forecasting/test set.</span>
 <a id="__codelineno-0-28" name="__codelineno-0-28"></a>
 <a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">    The class ensures that the split is valid by checking that the attributes are of the correct type and are ordered</span>
 <a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">    chronologically.</span>

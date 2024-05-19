@@ -759,17 +759,17 @@
         <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      Description
+      Description ✨
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Description">
+    <nav class="md-nav" aria-label="Description ✨">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      Features 📜
     </span>
   </a>
   
@@ -783,7 +783,7 @@
         <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Installation
+      Installation 💻
     </span>
   </a>
   
@@ -792,7 +792,7 @@
         <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting Started
+      Getting Started 🏃
     </span>
   </a>
   
@@ -801,7 +801,7 @@
         <li class="md-nav__item">
   <a href="#contributing" class="md-nav__link">
     <span class="md-ellipsis">
-      Contributing
+      Contributing ✌️
     </span>
   </a>
   
@@ -810,7 +810,7 @@
         <li class="md-nav__item">
   <a href="#license" class="md-nav__link">
     <span class="md-ellipsis">
-      License
+      License 👀
     </span>
   </a>
   
@@ -859,12 +859,13 @@
 <p><a href="https://fbruzzesi.github.io/timebasedcv">Documentation</a> | <a href="https://github.com/fbruzzesi/timebasedcv" target="_blank">Repository</a> | <a href="https://github.com/fbruzzesi/timebasedcv/issues" target="_blank">Issue Tracker</a></p>
 <hr />
 <h2 id="disclaimer">Disclaimer ⚠️<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
-<p>This codebase is experimental and is working for my use cases. It is very probable that there are cases not covered and for which it could break (badly). If you find them, please feel free to open an issue in the <a href="https://github.com/FBruzzesi/timebasedcv/issues/new" target="_blank">issue page</a> of the repo.</p>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>The current implementation of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html" target="_blank">scikit-learn TimeSeriesSplit</a> lacks the flexibility of having multiple samples within the same time period or time unit.</p>
-<p><strong>timebasedcv</strong> addresses such problem by providing a cross validation strategy based on a <strong>time unit</strong> rather than the number of samples. This is useful when the data is time dependent, and the split should keep together samples within the same time window.</p>
-<p>Temporal data leakage is an issue and we want to prevent that from happening by providing splits to make sure that models can train on past data and tested on future data, independently from the number of observations present within a given time period.</p>
-<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<p>This codebase is experimental and is working for my use cases. It is very probable that there are cases not entirely covered and for which it could break (badly). If you find them, please feel free to open an issue in the <a href="https://github.com/FBruzzesi/timebasedcv/issues/new" target="_blank">issue page</a> of the repo.</p>
+<h2 id="description">Description ✨<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>The current implementation of <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html" target="_blank">scikit-learn TimeSeriesSplit</a> lacks the flexibility of having multiple samples within the same time period (or time unit).</p>
+<p><strong>timebasedcv</strong> addresses such problem by providing a cross validation strategy based on a <strong>time period</strong> rather than the number of samples. This is useful when the data is time dependent, and the split should keep together samples within the same time window.</p>
+<p>Temporal data leakage is an issue and we want to prevent it from happening by providing splits that make sure the past and the future are well separated, so that data leakage does not spoil in a model cross validation.</p>
+<p>Again, these splits points solely depend on the time period and not the number of observations.</p>
+<h3 id="features">Features 📜<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
 <p>We introduce two main classes:</p>
 <ul>
 <li>
@@ -884,16 +885,16 @@
 <p>Considering the above choices, we also provide a scikit-learn compatible splitter: <a href="api/sklearn/#timebasedcv.sklearn.TimeBasedCVSplitter" target="_blank"><code>TimeBasedCVSplitter</code></a>. Considering the signature that <code>.split(...)</code> requires and the fact that CV Splitters need to know a priori the number of splits, <code>TimeBasedCVSplitter</code> is initialized with the time series containing the time information used to generate the train and test indices of each split.</p>
 </li>
 </ul>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<h2 id="installation">Installation 💻<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>TL;DR:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>timebasedcv
 </code></pre></div>
 <p>For further information, please refer to the dedicated <a href="installation/">installation</a> section.</p>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h2 id="getting-started">Getting Started 🏃<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>Please refer to the dedicated <a href="user-guide/getting-started/">getting started</a> section.</p>
-<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<h2 id="contributing">Contributing ✌️<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <p>Please refer to the dedicated <a href="contribute/">contributing guidelines</a> section.</p>
-<h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
+<h2 id="license">License 👀<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>The project has a <a href="https://github.com/FBruzzesi/timebasedcv/blob/main/LICENSE">MIT Licence</a>.</p>
 
 
