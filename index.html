@@ -775,6 +775,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dataframe-and-array-agnostic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataframe and array agnostic
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -884,6 +893,11 @@
 <li>
 <p>Considering the above choices, we also provide a scikit-learn compatible splitter: <a href="api/sklearn/#timebasedcv.sklearn.TimeBasedCVSplitter" target="_blank"><code>TimeBasedCVSplitter</code></a>. Considering the signature that <code>.split(...)</code> requires and the fact that CV Splitters need to know a priori the number of splits, <code>TimeBasedCVSplitter</code> is initialized with the time series containing the time information used to generate the train and test indices of each split.</p>
 </li>
+</ul>
+<h3 id="dataframe-and-array-agnostic">Dataframe and array agnostic<a class="headerlink" href="#dataframe-and-array-agnostic" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Thanks to <a href="https://narwhals-dev.github.io/narwhals/" target="_blank">Narwhals</a>, <code>TimeBasedSplit</code> works out of the box with <code>pandas</code>, <code>polars</code>, <code>pyarrow</code> and any other dataframe library supported by Narwhals.</li>
+<li>Thanks to the array API, <code>TimeBasedSplit</code> works out of the box with <code>numpy</code>, <code>cupy</code>, <code>dask.array</code> and any other array library that support slicing à la numpy.</li>
 </ul>
 <h2 id="installation">Installation 💻<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>TL;DR:</p>
